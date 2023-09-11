@@ -1,8 +1,8 @@
 from abc import ABC
 from typing import List
 
-from pyodmv2.xml_defintion.odm.enums.odm_v2_enum import OdmV2Enum
-from pyodmv2.xml_defintion.odm.tags.Element import Element
+from pyodm.v2_defintions.odm.enums.odm_v2_enum import OdmV2Enum
+from pyodm.v2_defintions.odm.tags.Element import Element
 
 
 class ClinicalData(Element):

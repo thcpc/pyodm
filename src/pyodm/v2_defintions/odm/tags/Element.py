@@ -2,8 +2,8 @@ import abc
 from abc import ABC
 from lxml import etree
 
-from pyodmv2.xml_defintion.odm.enums.odm_v2_enum import OdmV2Enum
-from pyodmv2.xml_defintion.odm.tags.Attribute import Attribute
+from pyodm.v2_defintions.odm.enums.odm_v2_enum import OdmV2Enum
+from pyodm.v2_defintions.odm.tags.Attribute import Attribute
 
 
 # from edc.common.utils.collection_utils import lowers
