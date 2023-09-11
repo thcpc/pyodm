@@ -2,9 +2,13 @@ import abc
 from abc import ABC
 from lxml import etree
 
-from edc.common.utils.collection_utils import lowers
-from edc.common.xml_defintion.odm.tags.Attribute import Attribute
-from edc.common.xml_defintion.odm_v2 import OdmV2
+from pyodmv2.xml_defintion.odm.enums.odm_v2_enum import OdmV2Enum
+from pyodmv2.xml_defintion.odm.tags.Attribute import Attribute
+
+
+# from edc.common.utils.collection_utils import lowers
+# from edc.common.v2_defintions.odm.tags.Attribute import Attribute
+# from edc.common.v2_defintions.odm_v2 import OdmV2
 
 
 class Element(ABC):
@@ -49,15 +53,15 @@ class Element(ABC):
         return self._xml_element
 
     @abc.abstractmethod
-    def element_name(self) -> OdmV2:
+    def element_name(self) -> OdmV2Enum:
         ...
 
     @abc.abstractmethod
-    def support_attribute(self) -> list[OdmV2]:
+    def support_attribute(self) -> list[OdmV2Enum]:
         ...
 
     @abc.abstractmethod
-    def support_children(self) -> list[OdmV2]:
+    def support_children(self) -> list[OdmV2Enum]:
         ...
 
     # @abc.abstractmethod

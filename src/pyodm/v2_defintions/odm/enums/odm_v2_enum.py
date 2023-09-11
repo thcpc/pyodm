@@ -1,8 +1,7 @@
 from enum import Enum
 
-from pyodmv2.utils.forest import Forest
 
-class OdmV2(Enum):
+class OdmV2Enum(Enum):
     ODM = "ODM"
     StudyEventData = "StudyEventData"
     SiteRef = "SiteRef"
