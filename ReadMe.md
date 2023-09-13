@@ -84,3 +84,5 @@ branches = [
 # Release
 ## Release 1.0.0-beta
 第一版本,内测
+## Release 1.0.0-beta1
+增加了Node 模糊匹配 

@@ -25,7 +25,8 @@ class Forest:
         self.nodes: list[list[Node]] = [[]]
 
     @property
-    def degree(self): return self._degree
+    def degree(self):
+        return self._degree
 
     def root(self) -> Node:
         return self.get_level_nodes(0)[0]
@@ -93,10 +94,12 @@ class Forest:
     def index(self, level, i) -> Node:
         return self.get_level_nodes(level)[i]
 
-    def find(self, level: int, xrange: set, **node_values) -> Union[None, Node]:
+    def find(self, level: int, xrange: set,fuzzy: bool = False, **node_values) -> Union[None, Node]:
         """
         指定索引搜索满足props条件的值
 
+        :param fuzzy: 是否模糊匹配， 默认为关闭 False
+        :type fuzzy:
         :param level: 指定查询的层级
         :type level: int
         :param xrange: 查询的范围
@@ -106,14 +109,18 @@ class Forest:
         :return:
         :rtype:
         """
-        result = list(filter(lambda i: self.nodes[level][i].satisfy(**node_values), xrange))
+        result = None
+        if fuzzy: result = list(filter(lambda i: self.nodes[level][i].fuzzy_matching(**node_values), xrange))
+        else: result = list(filter(lambda i: self.nodes[level][i].satisfy(**node_values), xrange))
         if not result: return None
         return self.nodes[level][result[0]]
 
-    def search(self, level: int, **node_values) -> list[Node]:
+    def search(self, level: int, fuzzy: bool = False, **node_values) -> list[Node]:
         """
         在指定层级搜索满足条件的节点
 
+        :param fuzzy: 是否模糊搜索，默认是关闭为 False
+        :type fuzzy: Boolean
         :param level: 指定的层级
         :type level: int
         :param node_values: 满足条件的值
@@ -121,6 +128,7 @@ class Forest:
         :return: 如果有满足的条件的值，则返回 list, 如果没有的话，则返回一个空 list
         :rtype: list[Node]
         """
+        if fuzzy: return list(filter(lambda node: node.fuzzy_matching(**node_values), self.nodes[level]))
         return list(filter(lambda node: node.satisfy(**node_values), self.nodes[level]))
 
     def get_level_nodes(self, level: int) -> list[Node]:

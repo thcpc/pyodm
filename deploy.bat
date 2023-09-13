@@ -1,2 +1,4 @@
-py -m build -o ../../../dist
+del dist\*
+py -m build
+py -m twine upload dist/*
 

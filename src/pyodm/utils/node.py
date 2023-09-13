@@ -7,7 +7,6 @@ level 4 :ig
 level 5 :item (variable, item_id, question)
 """
 
-
 class Node:
 
     def __init__(self, tree, parent_index=None, level=0):
@@ -42,13 +41,17 @@ class Node:
     搜寻特定的子节点
     '''
 
-    def find_child(self, **kwargs):
+    def find_child(self, fuzzy: bool = False, **kwargs):
         if not self.has_child():
             return None
         for i in self.children_index:
             node = self.tree.nodes[self.level + 1][i]
-            if node.satisfy(**kwargs):
-                return node
+            if fuzzy:
+                if node.fuzzy_matching(**kwargs):
+                    return node
+            else:
+                if node.satisfy(**kwargs):
+                    return node
         return None
 
     def get_child(self, index):
