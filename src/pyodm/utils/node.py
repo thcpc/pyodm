@@ -36,7 +36,7 @@ class Node:
     def children(self) -> list:
         if not self.has_child():
             return []
-        return [self.tree.nodes[self.level+1][i] for i in self.children_index]
+        return [self.tree.nodes[self.level + 1][i] for i in self.children_index]
 
     '''
     搜寻特定的子节点
@@ -46,35 +46,53 @@ class Node:
         if not self.has_child():
             return None
         for i in self.children_index:
-            node = self.tree.nodes[self.level+1][i]
+            node = self.tree.nodes[self.level + 1][i]
             if node.satisfy(**kwargs):
                 return node
         return None
 
     def get_child(self, index):
         if index in self.children_index:
-            return self.tree.nodes[self.level+1][index]
+            return self.tree.nodes[self.level + 1][index]
         return None
 
     def parent(self):
         if not self.has_parent():
             return None
-        return self.tree.nodes[self.level-1][self.parent_index]
+        return self.tree.nodes[self.level - 1][self.parent_index]
 
     """
     判断两个节点是否相同
     """
+
     def eql(self, node):
         return self.satisfy(**node.values)
 
-    '''
-    根据传入的参数来判断该节点是否满足条件
-    '''
-    def satisfy(self, **node_values):
+    def satisfy(self, **node_values) -> bool:
+        """
+        根据传入的参数来判断该节点是否满足条件
+        :param node_values: 需要比较的值
+        :type node_values:
+        :return: True 全部匹配 否则 False
+        :rtype: bool
+        """
         for k, v in node_values.items():
             if self.values[k] != v:
                 return False
         return True
+
+    def fuzzy_matching(self, **node_values) -> bool:
+        """
+        模糊匹配判断是否满足条件
+        :param node_values:
+        :type node_values:
+        :return: True 只要满足一个，
+        :rtype: bool
+        """
+        for k, v in node_values.items():
+            if self.values[k] == v:
+                return True
+        return False
 
     @classmethod
     def new(cls, tree, parent_index=None, level=0, **node_values):

@@ -2,13 +2,9 @@ import abc
 from abc import ABC
 from lxml import etree
 
-from pyodm.v2_defintions.odm.enums.odm_v2_enum import OdmV2Enum
-from pyodm.v2_defintions.odm.tags.Attribute import Attribute
-
-
-# from edc.common.utils.collection_utils import lowers
-# from edc.common.v2_defintions.odm.tags.Attribute import Attribute
-# from edc.common.v2_defintions.odm_v2 import OdmV2
+from pyodm.io.writer import Writer
+from pyodm.xml_definitions.enums.odm_v2_enum import OdmV2Enum
+from pyodm.xml_definitions.tags.Attribute import Attribute
 
 
 class Element(ABC):
@@ -99,14 +95,6 @@ class Element(ABC):
         # tree = etree.ElementTree(root)
         # tree.write("output.xml", pretty_print=True, encoding="utf-8")
 
+    def export(self, writer: Writer):
+        writer.write(self)
 
-if __name__ == '__main__':
-    root = etree.Element("A1")
-    child = etree.SubElement(root, "A2")
-
-    child.text = "Hello, XML!"
-    a3 = etree.SubElement(child, "A3")
-    a3.attrib["xxx"] = "yyyy"
-    a3.attrib["zzzz"] = "dddd"
-    tree = etree.ElementTree(root)
-    tree.write("output.xml", pretty_print=True, encoding="utf-8")

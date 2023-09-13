@@ -3,12 +3,12 @@
 
 from lxml import etree
 
-from pyodmv2.xml_defintion.odm.elements.builder import Builder
-from pyodmv2.xml_defintion.odm.elements.clinical_data import ClinicalData
-from pyodmv2.xml_defintion.odm.elements.study_event_data import StudyEventData
-from pyodmv2.xml_defintion.odm.elements.subject_data import SubjectData
-from pyodmv2.xml_defintion.odm.tags.Attribute import Attribute
-from pyodmv2.xml_defintion.odm.enums.odm_v2_enum import OdmV2Enum
+from pyodm.specifications.v2.elements.builder import Builder
+from pyodm.specifications.v2.elements.clinical_data import ClinicalData
+from pyodm.specifications.v2.elements.study_event_data import StudyEventData
+from pyodm.specifications.v2.elements.subject_data import SubjectData
+from pyodm.xml_defintions.enums.odm_v2_enum import OdmV2Enum
+from pyodm.xml_defintions.tags.Attribute import Attribute
 
 
 def test_odm():

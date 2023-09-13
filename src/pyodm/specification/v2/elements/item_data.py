@@ -1,7 +1,5 @@
-# from edc.common.v2_defintions.odm.tags.Element import Element
-# from edc.common.v2_defintions.odm_v2 import OdmV2
-from pyodmv2.xml_defintion.odm.enums.odm_v2_enum import OdmV2Enum
-from pyodmv2.xml_defintion.odm.tags.Element import Element
+from pyodm.xml_definitions.enums.odm_v2_enum import OdmV2Enum
+from pyodm.xml_definitions.tags.Element import Element
 
 
 class ItemData(Element):

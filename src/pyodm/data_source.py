@@ -2,7 +2,7 @@ import abc
 from abc import ABC
 
 
-class ODMSource(ABC):
+class DataSource(ABC):
 
     @abc.abstractmethod
     def data(self) -> list[list[dict]]: ...

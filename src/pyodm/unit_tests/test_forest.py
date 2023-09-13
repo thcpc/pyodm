@@ -1,6 +1,6 @@
 import pytest
 
-from pyodmv2.utils.forest import Forest
+from pyodm.utils.forest import Forest
 
 
 @pytest.fixture

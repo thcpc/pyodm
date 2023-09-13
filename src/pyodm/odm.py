@@ -1,8 +1,11 @@
 import abc
 from abc import ABC
 
-from pyodmv2.odm_source import ODMSource
-from pyodmv2.utils.forest import Forest
+from lxml import etree
+
+from pyodm.data_source import DataSource
+from pyodm.utils.forest import Forest
+from pyodm.xml_definitions.tags.Element import Element
 
 
 class ODM(ABC):
@@ -14,20 +17,23 @@ class ODM(ABC):
     def odm(self) -> Forest: return self._odm
 
     @odm.setter
-    def odm(self, source: ODMSource):
+    def odm(self, source: DataSource):
         self._odm = Forest.transform(source.data())
 
     @abc.abstractmethod
-    def v2(self):
+    def specification(self):
         """
-        非标准数据转为ODM V2 标准数据
+        把 _odm 数据转为 ODM specification的结构
         :return:
         :rtype:
         """
         ...
 
+    @abc.abstractmethod
+    def clinical(self) -> Element: ...
 
-def odm_factory(odm_clazz: ODM.__class__, source: ODMSource) -> ODM:
+
+def odm_factory(odm_clazz: ODM.__class__, source: DataSource) -> ODM:
     obj = odm_clazz()
     obj.odm = source
     return obj

@@ -1,7 +1,7 @@
 from functools import reduce
 from typing import Union, List
 
-from pyodmv2.utils.node import Node
+from pyodm.utils.node import Node
 
 
 class Forest:

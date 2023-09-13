@@ -1,5 +1,5 @@
-from pyodmv2.xml_defintion.odm.tags.Attribute import Attribute
-from pyodmv2.xml_defintion.odm.tags.Element import Element
+from pyodm.xml_definitions.tags import Attribute
+from pyodm.xml_definitions.tags import Element
 
 
 class Builder:
