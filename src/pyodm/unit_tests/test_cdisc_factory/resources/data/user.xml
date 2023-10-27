@@ -1,0 +1,18 @@
+<User OID="USR.007" UserType="Data analyst" OrganizationOID="ORG.MI6" LocationOID="LOC.MI6.LONDON">
+    <UserName>James007</UserName>
+    <Prefix>Mr</Prefix>
+    <Suffix>VII</Suffix>
+    <FullName>James Bond</FullName>
+    <GivenName>James</GivenName>
+    <FamilyName>Bond</FamilyName>
+    <Image ImageFileName="Fleming007impression.jpg" MimeType="image/jpg" href="https://en.wikipedia.org/wiki/James_Bond#/media/File:Fleming007impression.jpg"/>
+    <Address>
+        <StreetName>Albert Embankment</StreetName>
+        <HouseNumber>85</HouseNumber>
+        <City>London</City>
+        <Country>Great Britain</Country>
+        <PostalCode>SE1 7FY</PostalCode>
+        <OtherText>Vauxhall, Lambeth</OtherText>
+    </Address>
+    <Telecom TelecomType="Email" Value="James@MI6.org"/>
+</User>

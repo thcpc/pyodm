@@ -86,3 +86,5 @@ branches = [
 第一版本,内测
 ## Release 1.0.0-beta1
 增加了Node 模糊匹配 
+## Release 1.0.0-beat2
+增加了Node 模糊匹配,更新了关联方法

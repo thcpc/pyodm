@@ -25,15 +25,15 @@ def test_transform(tree_array):
     assert root.get("id") == 1
 
     assert len(root.children()) == 3
-    assert root.children()[0].get("id") == 2
-    assert root.children()[1].get("id") == 3
-    assert root.children()[2].get("id") == 4
+    assert root.children()[0]._get("id") == 2
+    assert root.children()[1]._get("id") == 3
+    assert root.children()[2]._get("id") == 4
 
     assert root.children()[0].has_child() is True
     assert root.children()[1].has_child() is False
     assert root.children()[2].has_child() is False
 
-    assert root.children()[0].children()[0].get("id") == 5
+    assert root.children()[0].children()[0]._get("id") == 5
 
 
 def test_one_level_tree(data_one):
