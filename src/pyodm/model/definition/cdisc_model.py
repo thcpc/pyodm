@@ -1,4 +1,3 @@
-import abc
 from pyodm.model.definition.usage import Usage
 
 

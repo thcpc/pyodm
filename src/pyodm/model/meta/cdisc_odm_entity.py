@@ -3,6 +3,9 @@ import pyodm.model.definition as Model
 
 
 class CdiscODMEntity(metaclass=EntityMeta):
+    """
+    自定义ODM的元素的时候，必须继承的元类
+    """
     def __init__(self):
         self._name = ""
         self.value = None

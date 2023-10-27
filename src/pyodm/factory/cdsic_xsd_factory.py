@@ -7,7 +7,9 @@ from pyodm.factory.abstract_cdisc_xml_factory import AbstractCdiscXMLFactory
 
 
 class CdiscXsdFactory(AbstractCdiscXMLFactory):
-
+    """
+    Class 类型的定义在XSD文件中
+    """
     def data_reader(self) -> AbstractXMLDataReader:
         return CdiscDataXsdReader(self)
 

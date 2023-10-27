@@ -10,6 +10,9 @@ from pyodm.utils.etree_utils import EtreeUtils
 
 
 class AbstractXMLDataReader(AbstractDataReader):
+    """
+    读取 XML 文件的实现
+    """
     def __init__(self, registry: CdiscRegistry):
         super().__init__(registry)
 

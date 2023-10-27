@@ -1,3 +1,5 @@
+import pathlib
+
 from lxml import etree
 
 import pyodm.model.definition as Model
@@ -22,10 +24,12 @@ def cdisc(model):
 
 
 class CdiscXmlWriter:
-
-    def __init__(self, cdisc):
+    """
+    ODM 对象导出为 XML 文件
+    """
+    def __init__(self, cdisc, out_put: pathlib.Path):
         self.cdisc = cdisc
-        self.file_path = "test.xml"
+        self.out_put = out_put
 
     def write(self):
 
@@ -37,7 +41,7 @@ class CdiscXmlWriter:
             status = action(cdisc=self.cdisc, element=element)
             if status != WriteStatus.PASS: break
         dump_tree = etree.ElementTree(element=element)
-        dump_tree.write(self.file_path, pretty_print=True, encoding="utf-8")
+        dump_tree.write(self.out_put, pretty_print=True, encoding="utf-8")
 
     def cdisc_model(self, unknown) -> bool:
         return isinstance(unknown, Meta.CdiscODMEntity) or \

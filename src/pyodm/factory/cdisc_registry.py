@@ -2,7 +2,9 @@ from pyodm.exceptions import CdiscFactoryException
 
 
 class CdiscRegistry:
-
+    """
+    注册 ODM 元素的 Class 类型
+    """
     def __init__(self):
         self._registry_classes = dict()
 

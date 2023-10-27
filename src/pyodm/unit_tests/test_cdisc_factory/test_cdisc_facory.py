@@ -16,7 +16,7 @@ def project_path():
 
 @pytest.fixture
 def xsd_files():
-    base = project_path().joinpath(pathlib.Path("resources"), pathlib.Path("odm"), pathlib.Path("schema"))
+    base = project_path().joinpath("model", "v2", "resources", "schema")
     xsds = ["ODM-admindata.xsd", "ODM-clinicaldata.xsd", "ODM-foundation.xsd",
             "ODM-protocol.xsd", "ODM-referencedata.xsd", "ODM-study.xsd"]
     return [base.joinpath(xsd) for xsd in xsds]

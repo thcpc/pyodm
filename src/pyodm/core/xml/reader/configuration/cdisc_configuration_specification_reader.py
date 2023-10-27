@@ -5,7 +5,9 @@ import lxml.etree as Etree
 
 
 class CdiscConfigurationSpecificationReader(AbstractConfigurationReader):
-
+    """
+    读取 Specifincation 配置文件
+    """
     def load_cdisc_definition(self, registry, files: list[str]):
         for file in files:
             xml_tree = Etree.parse(file)

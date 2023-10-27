@@ -10,6 +10,10 @@ from pyodm.model.meta.cdisc_odm_entity import CdiscODMEntity
 
 # TODO 变量的域的区分 xmlns(基本功能完成后再做)
 class CdiscConfigurationXsdReader(AbstractConfigurationReader):
+    """
+    读取 ODM XSD 格式的配置文件
+    https://github.com/cdisc-org/DataExchange-ODM/tree/main/schema
+    """
     def __init__(self):
         self.attributeGroups = dict()
         self.complexTypes = dict()

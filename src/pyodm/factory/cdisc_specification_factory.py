@@ -10,6 +10,9 @@ from pyodm.factory.abstract_cdisc_xml_factory import AbstractCdiscXMLFactory
 
 
 class CdiscSpecificationFactory(AbstractCdiscXMLFactory):
+    """
+    Class 类型的对象定义在Specification 中
+    """
     def __init__(self, data_file: pathlib.Path, specification_files: list):
         super().__init__(data_file)
         self._specification_files = specification_files

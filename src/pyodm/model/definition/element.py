@@ -4,6 +4,11 @@ from pyodm.model.definition.cdisc_model import CdiscModel
 
 
 class ManyElements(CdiscModel):
+    """
+    * (meaning optional, with zero or more occurrences)
+    + (meaning required, with one or more occurrences)
+    对应标识为*或+的子元素
+    """
     def __init__(self):
         super().__init__()
         self._array = []
@@ -64,6 +69,9 @@ class ManyElements(CdiscModel):
 
 
 class OneElement(CdiscModel):
+    """
+    ? (meaning optional, with zero or one occurrence)
+    """
     def __init__(self):
         super().__init__()
         self._name = "NoUse!"
