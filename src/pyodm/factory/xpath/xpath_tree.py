@@ -3,7 +3,7 @@ from pyodm.factory.xpath.direction import Direction
 from pyodm.factory.xpath.xpath import Xpath
 
 
-class Xtree:
+class XpathTree:
     """
     特殊的树形结构,非通用数据结构,仅适用 XPATH 功能
     目标 : 解析并保存 Class 的树形结构

@@ -5,7 +5,7 @@ from lxml import etree
 from pyodm.core.support.abstract_configuration_reader import AbstractConfigurationReader
 import pyodm.model.definition as Model
 from pyodm.factory.cdisc_registry import CdiscRegistry
-from pyodm.factory.xpath.x_node import XNode
+from pyodm.factory.xpath.xpath_node import XpathNode
 from pyodm.model.meta.cdisc_odm_entity import CdiscODMEntity
 
 
@@ -132,6 +132,6 @@ class CdiscConfigurationXsdReader(AbstractConfigurationReader):
             attrs[element.get("name")] = cdisc_definition
         for attribute_name, cls_type in clazz_info.get("attributes").items():
             attrs[attribute_name] = __definition.get(cls_type)()
-        registry.definition_tree.add(XNode(name), [XNode(e.get('name')) for e in clazz_info.get("elements")])
+        registry.definition_tree.add(XpathNode(name), [XpathNode(e.get('name')) for e in clazz_info.get("elements")])
         return type(name, (CdiscODMEntity,), attrs)
 

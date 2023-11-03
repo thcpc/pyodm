@@ -5,7 +5,7 @@ from pyodm.exceptions import CdiscDefineRequiredException
 
 import lxml.etree as Etree
 
-from pyodm.factory.xpath.x_node import XNode
+from pyodm.factory.xpath.xpath_node import XpathNode
 from pyodm.model.definition import OneElement, ManyElements
 
 
@@ -26,8 +26,8 @@ class CdiscConfigurationSpecificationReader(AbstractConfigurationReader):
                 elements = []
                 for attr_name, attr in vars(clazz).items():
                     if isinstance(attr, OneElement) or isinstance(attr, ManyElements):
-                        elements.append(XNode(attr_name))
-                registry.definition_tree.add(XNode(name), elements)
+                        elements.append(XpathNode(attr_name))
+                registry.definition_tree.add(XpathNode(name), elements)
 
                 registry.registry_cdisc(name, clazz)
 

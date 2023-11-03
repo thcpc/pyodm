@@ -1,4 +1,4 @@
-class XNode:
+class XpathNode:
     def __init__(self, name):
         self.name = name
         self.parent: list[int] = []

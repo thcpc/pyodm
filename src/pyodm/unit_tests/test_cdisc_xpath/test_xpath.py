@@ -2,8 +2,8 @@ import pytest
 from cjen.nene.collection_utils import list_eql
 
 from pyodm.factory.xpath.direction import Direction
-from pyodm.factory.xpath.x_node import XNode
-from pyodm.factory.xpath.x_tree import Xtree
+from pyodm.factory.xpath.xpath_node import XpathNode
+from pyodm.factory.xpath.xpath_tree import XpathTree
 
 
 @pytest.fixture
@@ -16,9 +16,9 @@ def test_data1():
 
 
 def test_case1(test_data1):
-    xtree = Xtree()
+    xtree = XpathTree()
     for key, children in test_data1.items():
-        xtree.add(XNode(key), [XNode(child) for child in children])
+        xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert xtree.count() == 10
     for node in xtree.node_children("A"):
         assert node.name in ["A1", "A2", "A3"]
@@ -38,9 +38,9 @@ def test_data2():
 
 
 def test_case2(test_data2):
-    xtree = Xtree()
+    xtree = XpathTree()
     for key, children in test_data2.items():
-        xtree.add(XNode(key), [XNode(child) for child in children])
+        xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert xtree.count() == 9
     for node in xtree.node_children("A"):
         assert node.name in ["A1", "A2", "A3"]
@@ -60,9 +60,9 @@ def test_data3():
 
 
 def test_case3(test_data3):
-    xtree = Xtree()
+    xtree = XpathTree()
     for key, children in test_data3.items():
-        xtree.add(XNode(key), [XNode(child) for child in children])
+        xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert xtree.count() == 8
     for node in xtree.node_children("A"):
         assert node.name in ["A1", "A2", "A3"]
@@ -83,9 +83,9 @@ def test_data4():
 
 
 def test_case4(test_data4):
-    xtree = Xtree()
+    xtree = XpathTree()
     for key, children in test_data4.items():
-        xtree.add(XNode(key), [XNode(child) for child in children])
+        xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert list_eql(['A/B/B1/C1', 'A/B/B1/C2', 'A/B/B1/C3', 'A/B/B1/C4', 'A/B/B2', 'A/B/B3', 'A/A2'], xtree.xpath())
     # assert ['A/B/B1/C1', 'A/B/B1/C2', 'A/B/B1/C3', 'A/B/B1/C4', 'A/B/B2', 'A/B/B3', 'A/A2'] == xtree.xpath()
 
@@ -103,9 +103,9 @@ def test_case5(test_data5):
     """
     父节点中的子节点包含父节点 "B": ["B", "B2", "B3"]
     """
-    xtree = Xtree()
+    xtree = XpathTree()
     for key, children in test_data5.items():
-        xtree.add(XNode(key), [XNode(child) for child in children])
+        xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert list_eql(['A/B/B2', 'A/B/B3', 'A/A2', 'B1/C1', 'B1/C2', 'B1/C3', 'B1/C4'], xtree.xpath())
 
 
@@ -122,9 +122,9 @@ def test_case6(test_data6):
     """
     子节点包含其它父节点 "B1": ["B", "C2"]
     """
-    xtree = Xtree()
+    xtree = XpathTree()
     for key, children in test_data6.items():
-        xtree.add(XNode(key), [XNode(child) for child in children])
+        xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert list_eql(['A/B/B2', 'A/B/B3', 'A/A2', 'B1/B/B2', 'B1/B/B3', 'B1/C2'], xtree.xpath())
 
 
@@ -142,9 +142,9 @@ def test_case7(test_data7):
     """
     去重
     """
-    xtree = Xtree()
+    xtree = XpathTree()
     for key, children in test_data7.items():
-        xtree.add(XNode(key), [XNode(child) for child in children])
+        xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert list_eql(['A/B/B2', 'A/B/B3', 'B1/B/B2', 'B1/B/B3', 'B1/C2'], xtree.xpath())
 
 
@@ -161,9 +161,9 @@ def test_case8(test_data8):
     """
     获取 XPATH 的方式
     """
-    xtree = Xtree()
+    xtree = XpathTree()
     for key, children in test_data8.items():
-        xtree.add(XNode(key), [XNode(child) for child in children])
+        xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert list_eql(['A/B/B2', 'A/B/B3'], xtree.xpath("A"))
     assert list_eql(['A/B/B3', 'B1/B/B3'], xtree.xpath("B3", Direction.TO))
     assert list_eql(['A/B/B2', 'A/B/B3', 'B1/B/B2', 'B1/B/B3'], xtree.xpath("B", Direction.INCLUDE))
