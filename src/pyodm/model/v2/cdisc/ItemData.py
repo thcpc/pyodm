@@ -10,17 +10,13 @@ class ItemData(Meta.CdiscODMEntity):
     ItemOID = Model.Attribute()
     
     TransactionType = Model.Attribute()
-    
+
     IsNull = Model.Attribute()
-    
-    
+
     Value = Model.ManyElements()
     
     Query = Model.ManyElements()
-    
-    AuditRecord = Model.OneElement()
-    
-    Signature = Model.OneElement()
-    
-    Annotation = Model.ManyElements()
+
+    AuditRecord = Model.ManyElements()
+
     

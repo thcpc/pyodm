@@ -358,9 +358,12 @@
         <xs:attributeGroup ref="DescriptionAttributeExtension"/>
     </xs:complexType>
     <xs:complexType name="ODMcomplexTypeDefinition-TranslatedText" mixed="true">
+        <!--
+        注释这部分，标准定义“https://wiki.cdisc.org/display/ODM2/TranslatedText+Element”里没有这部分
+        xsd 文件中也没有定义该文件，所以注释
       <xs:sequence>
         <xs:element ref="xhtml:div" minOccurs="0" maxOccurs="1" />
-      </xs:sequence>
+      </xs:sequence>-->
       <xs:attributeGroup ref="TranslatedTextAttributeDefinition"/>
       <xs:attributeGroup ref="TranslatedTextAttributeExtension"/>
     </xs:complexType>

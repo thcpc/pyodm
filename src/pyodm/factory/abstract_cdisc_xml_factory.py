@@ -1,7 +1,7 @@
 import abc
 import pathlib
 
-from pyodm.core.xml.reader.abstract_xml_data_reader import AbstractXMLDataReader
+from pyodm.core.xml.reader.data.xml_data_reader import XMLDataReader
 from pyodm.factory.abstract_cdisc_factory import AbstractCdiscFactory
 
 
@@ -19,7 +19,7 @@ class AbstractCdiscXMLFactory(AbstractCdiscFactory):
     def clazz_reader(self): ...
 
     @abc.abstractmethod
-    def data_reader(self) -> AbstractXMLDataReader: ...
+    def data_reader(self) -> XMLDataReader: ...
 
     # Override
     def _odm_process(self):

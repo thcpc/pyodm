@@ -61,7 +61,7 @@ class CdiscXmlWriter:
     @cdisc(model=Model.Attribute)
     def _attribute(self, cdisc: Model.Attribute, element: etree._Element):
         if cdisc.no_use(): return WriteStatus.IGNORE
-        element.attrib[cdisc.name] = cdisc.value
+        element.attrib[cdisc.name] = str(cdisc.value)
 
     @cdisc(model=Model.OneElement)
     def _one_element(self, cdisc: Model.OneElement, element: etree._Element) -> WriteStatus:

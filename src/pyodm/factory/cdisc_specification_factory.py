@@ -1,11 +1,8 @@
-import importlib
 import pathlib
 
-from pyodm.core.xml.reader.abstract_configuration_reader import AbstractConfigurationReader
-from pyodm.core.xml.reader.abstract_xml_data_reader import AbstractXMLDataReader
+from pyodm.core.xml.reader.data.xml_data_reader import XMLDataReader
 from pyodm.core.xml.reader.configuration.cdisc_configuration_specification_reader import \
     CdiscConfigurationSpecificationReader
-from pyodm.core.xml.reader.data.cdisc_data_specification_reader import CdiscDataSpecificationReader
 from pyodm.factory.abstract_cdisc_xml_factory import AbstractCdiscXMLFactory
 
 
@@ -20,6 +17,6 @@ class CdiscSpecificationFactory(AbstractCdiscXMLFactory):
     def clazz_reader(self):
         CdiscConfigurationSpecificationReader().load_cdisc_definition(self, self._specification_files)
 
-    def data_reader(self) -> AbstractXMLDataReader:
-        return CdiscDataSpecificationReader(self)
+    def data_reader(self) -> XMLDataReader:
+        return XMLDataReader(self)
 

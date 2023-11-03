@@ -2,9 +2,10 @@ import copy
 
 from lxml import etree
 
-from pyodm.core.xml.reader.abstract_configuration_reader import AbstractConfigurationReader
+from pyodm.core.support.abstract_configuration_reader import AbstractConfigurationReader
 import pyodm.model.definition as Model
 from pyodm.factory.cdisc_registry import CdiscRegistry
+from pyodm.factory.xpath.x_node import XNode
 from pyodm.model.meta.cdisc_odm_entity import CdiscODMEntity
 
 
@@ -116,9 +117,9 @@ class CdiscConfigurationXsdReader(AbstractConfigurationReader):
         for xsd_file in xsd_files:
             self.load(xsd_file=xsd_file)
         for name, clazz_info in self.cdisc().items():
-            registry.registry_cdisc(name=name, cdisc_class=self._clazz_parser(name,clazz_info))
+            registry.registry_cdisc(name=name, cdisc_class=self._clazz_parser(name, clazz_info, registry))
 
-    def _clazz_parser(self, name, clazz_info: dict):
+    def _clazz_parser(self, name, clazz_info: dict, registry: CdiscRegistry):
         __definition = {
             "model.Attribute()": Model.Attribute,
             "model.OneElement()": Model.OneElement,
@@ -126,7 +127,11 @@ class CdiscConfigurationXsdReader(AbstractConfigurationReader):
         }
         attrs = {}
         for element in clazz_info.get("elements"):
-            attrs[element.get("name")] = __definition.get(element.get("cls_type"))()
-        for name, cls_type in clazz_info.get("attributes").items():
-            attrs[name] = __definition.get(cls_type)()
+            cdisc_definition = __definition.get(element.get("cls_type"))()
+            cdisc_definition.parent = name
+            attrs[element.get("name")] = cdisc_definition
+        for attribute_name, cls_type in clazz_info.get("attributes").items():
+            attrs[attribute_name] = __definition.get(cls_type)()
+        registry.definition_tree.add(XNode(name), [XNode(e.get('name')) for e in clazz_info.get("elements")])
         return type(name, (CdiscODMEntity,), attrs)
+

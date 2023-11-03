@@ -1,5 +1,6 @@
-import pyodm.model.definition as model
+
 import pyodm.model.meta.cdisc_odm_entity as Meta
+import pyodm.model.definition as Model
 
 
 class Annotation(Meta.CdiscODMEntity):
@@ -12,8 +13,7 @@ class Annotation(Meta.CdiscODMEntity):
     TransactionType = Model.Attribute()
     
     ID = Model.Attribute()
-    
-    
+
     Comment = Model.OneElement()
     
     Coding = Model.ManyElements()

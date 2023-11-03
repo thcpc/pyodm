@@ -1,4 +1,5 @@
 from pyodm.exceptions import CdiscFactoryException
+from pyodm.factory.xpath.x_tree import Xtree
 
 
 class CdiscRegistry:
@@ -7,6 +8,7 @@ class CdiscRegistry:
     """
     def __init__(self):
         self._registry_classes = dict()
+        self.definition_tree = Xtree()
 
     def get(self, name: str):
         if self._registry_classes.get(name) is None:

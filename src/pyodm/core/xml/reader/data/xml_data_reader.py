@@ -9,18 +9,16 @@ from pyodm.model.definition import OneElement, ManyElements
 from pyodm.utils.etree_utils import EtreeUtils
 
 
-class AbstractXMLDataReader(AbstractDataReader):
+class XMLDataReader(AbstractDataReader):
     """
     读取 XML 文件的实现
     """
     def __init__(self, registry: CdiscRegistry):
         super().__init__(registry)
 
-
-
-    @abc.abstractmethod
     def _new_cdisc_node(self, cdisc_name):
-        ...
+        new_obj = self.registry.get(cdisc_name)()
+        return new_obj
 
     def _set_attribute(self, element, cdisc_node):
         for key, val in element.attrib.items():
