@@ -11,6 +11,13 @@ class CdiscSpecificationFactory(AbstractCdiscXMLFactory):
     Class 类型的对象定义在Specification 中
     """
     def __init__(self, data_file: pathlib.Path, specification_files: list):
+        """
+
+        :param data_file: 数据文件路径
+        :type data_file: pathlib.Path
+        :param specification_files: 定义 Class 的配置
+        :type specification_files: list[pathlib.Path]
+        """
         super().__init__(data_file)
         self._specification_files = specification_files
 

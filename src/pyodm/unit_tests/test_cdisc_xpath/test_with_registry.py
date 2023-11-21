@@ -6,12 +6,12 @@ from pyodm.core.xml.reader.configuration.cdisc_configuration_xsd_reader import C
 from pyodm.factory.cdisc_registry import CdiscRegistry
 from pyodm.factory.cdisc_specification_factory import CdiscSpecificationFactory
 from pyodm.factory.xpath.direction import Direction
-from pyodm.unit_tests.test_cdisc_factory.test_cdisc_facory import project_path
+from pyodm.utils.path_utils import PathUtils
 
 
 @pytest.fixture
 def xsd_files():
-    base = project_path(__file__).joinpath("model", "v2", "resources", "schema")
+    base = PathUtils.folder("pyodm", __file__).joinpath("model", "v2", "resources", "schema")
     xsds = ["ODM-admindata.xsd", "ODM-clinicaldata.xsd", "ODM-foundation.xsd",
             "ODM-protocol.xsd", "ODM-referencedata.xsd", "ODM-study.xsd"]
     return [base.joinpath(xsd) for xsd in xsds]
@@ -44,3 +44,4 @@ def test_with_spec(specification_file):
     CdiscConfigurationSpecificationReader().load_cdisc_definition(registry, [specification_file])
     for e in registry.definition_tree.xpath("ODM"):
         print(e)
+    registry.definition_tree.children_by_name("SubjectData")

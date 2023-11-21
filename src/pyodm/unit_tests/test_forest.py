@@ -170,3 +170,24 @@ def test_three_level_tree(data_three):
     assert root2.find_child(subject_id=3, subject_name="S04").find_child(visit_id=1,
                                                                          visit_name="V01").parent().parent().satisfy(
         site_id=2, site_name="D03") is True
+
+
+@pytest.fixture
+def test_dict_data():
+    return [
+        [dict(SubjectData=dict(SubjectKey="001")), dict(StudyEventData=dict(StudyEventOID="StudyEventOID001"))],
+        [dict(SubjectData=dict(SubjectKey="001")), dict(StudyEventData=dict(StudyEventOID="StudyEventOID002"))],
+        [dict(SubjectData=dict(SubjectKey="002")), dict(StudyEventData=dict(StudyEventOID="StudyEventOID002"))],
+        [dict(SubjectData=dict(SubjectKey="002")), dict(StudyEventData=dict(StudyEventOID="StudyEventOID002"))]
+    ]
+
+
+def test_dict(test_dict_data):
+    tree = Forest.factory()
+    for e in test_dict_data:
+        tree.add_branch(e)
+    assert len(tree.nodes) == 2
+    subject001 = tree.get_level_nodes(0)[0]
+    study_event = subject001.find_child(StudyEventData=dict(StudyEventOID="StudyEventOID001"))
+    print(study_event)
+    assert dict(a=dict(b=1, c=1)) == dict(a=dict(b=1, c=1))

@@ -1,6 +1,7 @@
 from pyodm.exceptions import ParserException
 from pyodm.factory.xpath.direction import Direction
 from pyodm.factory.xpath.xpath import Xpath
+from pyodm.factory.xpath.xpath_node import XpathNode
 
 
 class XpathTree:
@@ -9,7 +10,7 @@ class XpathTree:
     目标 : 解析并保存 Class 的树形结构
     """
     def __init__(self):
-        self._nodes = []
+        self._nodes: list[XpathNode] = []
 
     def count(self):
         return len(self._nodes)
@@ -18,7 +19,7 @@ class XpathTree:
         self._add_parent(parent)
         self._add_child(parent, children)
 
-    def find(self, node) -> int:
+    def find(self, node: XpathNode) -> int:
         try:
             return self._nodes.index(node)
         except ValueError as e:
@@ -44,11 +45,14 @@ class XpathTree:
                 self._nodes[j].parent.append(i)
                 self._nodes[i].children.append(j)
 
-    def node_children(self, name) -> list:
+    def children_by_name(self, node_name: str) -> list[XpathNode]:
         for node in self._nodes:
-            if node.name == name:
+            if node.name == node_name:
                 return [self._nodes[i] for i in node.children]
         return []
+
+    def children_by_node(self, node: XpathNode) -> list[XpathNode]:
+        return [self._nodes[i] for i in node.children]
 
     def roots(self) -> list:
         results = []

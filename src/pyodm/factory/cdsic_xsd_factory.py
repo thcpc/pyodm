@@ -9,15 +9,16 @@ class CdiscXsdFactory(AbstractCdiscXMLFactory):
     """
     Class 类型的定义在XSD文件中
     """
-    def data_reader(self) -> XMLDataReader:
-        return XMLDataReader(self)
 
     def __init__(self, data_file: pathlib.Path, xsd_files: list):
+        """
+        :param data_file:  数据文件路径
+        :type data_file: pathlib.Path
+        :param xsd_files: XSD配置文件路径
+        :type xsd_files: list[pathlib.Path]
+        """
         super().__init__(data_file)
         self._xsd_files = xsd_files
 
     def clazz_reader(self):
         CdiscConfigurationXsdReader().load_cdisc_definition(self, self._xsd_files)
-
-
-

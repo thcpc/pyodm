@@ -5,18 +5,12 @@ import pytest
 from pyodm.factory.cdsic_xsd_factory import CdiscXsdFactory
 from pyodm.unit_tests.test_cdisc_factory.common_assert import assert_case1, assert_case2, \
     assert_case3, assert_case4, assert_case5, assert_case6
-
-
-def project_path(current):
-    path = pathlib.Path(current).parent
-    while path.name != "pyodm":
-        path = path.parent
-    return path
+from pyodm.utils.path_utils import PathUtils
 
 
 @pytest.fixture
 def xsd_files():
-    base = project_path(__file__).joinpath("model", "v2", "resources", "schema")
+    base = PathUtils.folder("pyodm", __file__).joinpath("model", "v2", "resources", "schema")
     xsds = ["ODM-admindata.xsd", "ODM-clinicaldata.xsd", "ODM-foundation.xsd",
             "ODM-protocol.xsd", "ODM-referencedata.xsd", "ODM-study.xsd"]
     return [base.joinpath(xsd) for xsd in xsds]

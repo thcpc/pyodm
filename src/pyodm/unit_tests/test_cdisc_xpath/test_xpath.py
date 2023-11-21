@@ -20,11 +20,11 @@ def test_case1(test_data1):
     for key, children in test_data1.items():
         xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert xtree.count() == 10
-    for node in xtree.node_children("A"):
+    for node in xtree.children_by_name("A"):
         assert node.name in ["A1", "A2", "A3"]
-    for node in xtree.node_children("A1"):
+    for node in xtree.children_by_name("A1"):
         assert node.name in ["C1", "B", "C2"]
-    for node in xtree.node_children("B"):
+    for node in xtree.children_by_name("B"):
         assert node.name in ["B1", "B2", "B3"]
 
 
@@ -42,11 +42,11 @@ def test_case2(test_data2):
     for key, children in test_data2.items():
         xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert xtree.count() == 9
-    for node in xtree.node_children("A"):
+    for node in xtree.children_by_name("A"):
         assert node.name in ["A1", "A2", "A3"]
-    for node in xtree.node_children("B"):
+    for node in xtree.children_by_name("B"):
         assert node.name in ["B1", "B2", "B3"]
-    for node in xtree.node_children("C"):
+    for node in xtree.children_by_name("C"):
         assert node.name in ["A", "B"]
 
 
@@ -64,11 +64,11 @@ def test_case3(test_data3):
     for key, children in test_data3.items():
         xtree.add(XpathNode(key), [XpathNode(child) for child in children])
     assert xtree.count() == 8
-    for node in xtree.node_children("A"):
+    for node in xtree.children_by_name("A"):
         assert node.name in ["A1", "A2", "A3"]
-    for node in xtree.node_children("B"):
+    for node in xtree.children_by_name("B"):
         assert node.name in ["B", "B2", "B3"]
-    for node in xtree.node_children("C"):
+    for node in xtree.children_by_name("C"):
         assert node.name in ["A", "B"]
     print(xtree._all_path_index())
 

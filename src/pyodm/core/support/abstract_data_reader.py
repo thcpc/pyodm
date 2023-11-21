@@ -1,6 +1,6 @@
 import abc
-import pathlib
 
+from pyodm.core.support.abstract_resource import AbstractResource
 from pyodm.factory.cdisc_registry import CdiscRegistry
 
 
@@ -16,4 +16,4 @@ class AbstractDataReader(abc.ABC):
     def registry(self): return self._registry
 
     @abc.abstractmethod
-    def read(self, file:  pathlib.Path): ...
+    def read(self, resource: AbstractResource): ...
