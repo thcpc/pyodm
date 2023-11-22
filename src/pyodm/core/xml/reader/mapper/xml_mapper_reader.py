@@ -3,7 +3,7 @@ from xml.etree.ElementTree import ElementTree
 from cjen.mama.meta_data import MetaData
 from lxml.etree import Element
 
-from pyodm.core.support.abstract_resource import AbstractResource
+from pyodm.core.support.abstract_data_loader import AbstractDataLoader
 from pyodm.core.support.abstract_data_reader import AbstractDataReader
 from pyodm.exceptions import AttributeException, ErrCode, ElementException
 from pyodm.factory.cdisc_registry import CdiscRegistry
@@ -21,7 +21,7 @@ class XMLMapperReader(AbstractDataReader):
         self._array = []
         self.data = data
 
-    def read(self, resource: AbstractResource):
+    def read(self, resource: AbstractDataLoader):
         tree = self._load(resource)
         self._parse_element(tree.getroot(), level=1)
         return self._array
@@ -49,5 +49,5 @@ class XMLMapperReader(AbstractDataReader):
     def _contain_elements(self, element_name, class_name) -> bool:
         return element_name in ClassUtils.elements_name(clazz=self.registry.get(class_name))
 
-    def _load(self, resource: AbstractResource) -> ElementTree:
+    def _load(self, resource: AbstractDataLoader) -> ElementTree:
         return resource.load()

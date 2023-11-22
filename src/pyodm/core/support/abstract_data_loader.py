@@ -1,6 +1,6 @@
 import abc
 
 
-class AbstractResource(abc.ABC):
+class AbstractDataLoader(abc.ABC):
     @abc.abstractmethod
     def load(self): ...

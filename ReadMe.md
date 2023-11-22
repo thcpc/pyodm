@@ -219,3 +219,7 @@ branches = [
 ## Release 1.0.0-beat2
 
 增加了Node 模糊匹配,更新了关联方法
+
+## Release 1.0.0-beat3
+
+增加了 ODM 生成 Factory 对象

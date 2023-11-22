@@ -4,7 +4,7 @@ from pyodm.core.xml.reader.configuration.cdisc_configuration_specification_reade
     CdiscConfigurationSpecificationReader
 from pyodm.core.xml.reader.configuration.cdisc_configuration_xsd_reader import CdiscConfigurationXsdReader
 from pyodm.factory.cdisc_registry import CdiscRegistry
-from pyodm.factory.cdisc_specification_factory import CdiscSpecificationFactory
+from pyodm.factory.cdisc_xml_specification_factory import CdiscXMLSpecificationFactory
 from pyodm.factory.xpath.direction import Direction
 from pyodm.utils.path_utils import PathUtils
 

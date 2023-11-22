@@ -1,4 +1,4 @@
-from pyodm.core.resource.forest_resource import ForestResource
+from pyodm.core.data_loader.forest_data_loader import ForestDataLoader
 from pyodm.core.support.abstract_data_reader import AbstractDataReader
 from pyodm.factory.cdisc_registry import CdiscRegistry
 from pyodm.model.definition import ManyElements, OneElement, Attribute
@@ -14,8 +14,8 @@ class ForestDataReader(AbstractDataReader):
     def __init__(self, registry: CdiscRegistry):
         super().__init__(registry)
 
-    def read(self, resource: ForestResource):
-        forest_data = resource.load()
+    def read(self, data_loader: ForestDataLoader):
+        forest_data = data_loader.load()
         result = self.read_data(forest_data)
         if len(result) == 1: return result[0]
         return result

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalData ODMClass='ClinicalData'>
+    <SubjectData ODMClass='SubjectData' SubjectKey="SubjectKey">
+        <StudyEventData ODMClass="StudyEventData" StudyEventOID="StudyEventOID">
+            <ItemGroupData ODMClass="ItemGroupData" ItemGroupOID="ItemGroupOID" ItemGroupRepeatKey="ItemGroupRepeatKey">
+                <ItemData ODMClass="ItemData" ItemOID="ItemOID">
+                    <Value ODMClass="Value" SeqNum="SeqNum" Text="Text"/>
+                </ItemData>
+            </ItemGroupData>
+        </StudyEventData>
+        <SiteRef ODMClass="SiteRef" LocationOID="LocationOID"/>
+    </SubjectData>
+</ClinicalData>

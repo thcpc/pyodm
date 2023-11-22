@@ -1,6 +1,6 @@
 from lxml import etree
 
-from pyodm.core.support.abstract_resource import AbstractResource
+from pyodm.core.support.abstract_data_loader import AbstractDataLoader
 from pyodm.core.support.abstract_data_reader import AbstractDataReader
 from pyodm.factory.cdisc_registry import CdiscRegistry
 from pyodm.model.definition import OneElement, ManyElements
@@ -61,6 +61,6 @@ class XMLDataReader(AbstractDataReader):
             one_element.name = sub_cdisc_name
             setattr(cdisc_node, sub_cdisc_name, one_element)
 
-    def read(self, resource: AbstractResource):
+    def read(self, resource: AbstractDataLoader):
         tree = resource.load()
         return self._parse(tree.getroot(), EtreeUtils.localname(tree.getroot()))
