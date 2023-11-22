@@ -8,6 +8,6 @@ path = PathUtils.folder("pyodm", __file__)
 
 
 @CdiscSQL(
-    sql_path=path.joinpath("unit_tests", "test_forest_factory", "sqls", "subjects.sql"),
-    mapper_path=path.joinpath("unit_tests", "test_forest_factory", "mappers", "mapper.xml"))
+    sql_path=path.joinpath("unit_tests", "test_listable_factory", "sqls", "subjects.sql"),
+    mapper_path=path.joinpath("unit_tests", "test_listable_factory", "mappers", "mapper.xml"))
 class SubjectMapper(MetaMysql): ...
