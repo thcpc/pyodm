@@ -11,6 +11,7 @@ from pyodm.utils.path_utils import PathUtils
 from example.database.subject_data_resource import SubjectDataResource
 
 if __name__ == '__main__':
+    # 定义数据配置
     database_info = DataBaseInfo.factory(dict(
         host="",# 数据库主机
         port=3306,# 数据库端口号
@@ -18,13 +19,11 @@ if __name__ == '__main__':
         pwd="",# 数据库密码
         database=""# 数据库库名
     ))
-    # database_info = DataBaseInfo.factory(
-    #     dict(host="dev-03.cluster-c9qe4y0vrvda.rds.cn-northwest-1.amazonaws.com.cn", port=3306,
-    #          user='root', pwd='8YTJWOuA7XRK17wRQnw4',
-    #          database='eclinical_edc_dev_846'))
+    # 定义数据源
     data_source = SubjectDataResource(database_info)
+    # 生成 ODM 对象
     factory = CdiscListableFactory(data_source)
-
     odm_data = factory.odm()
+    # 导出成 XML 文件
     cw = CdiscXmlWriter(odm_data, pathlib.Path(f"subject_data.xml"))
     cw.write()

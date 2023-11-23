@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SubjectForm Name="DM" >
+    <SubjectItem Id="1" Name="Race"> China</SubjectItem>
+    <SubjectItem Id="2" Name="Age" > 18 </SubjectItem>
+    <SubjectItem Id="3" Name="Date"> 2020-10-01</SubjectItem>
+</SubjectForm>
