@@ -2,7 +2,6 @@ import pathlib
 
 from cjen.nene.database_info import DataBaseInfo
 
-
 from pyodm.core.xml.writer.cdisc_xml_writer import CdiscXmlWriter
 from pyodm.factory.cdisc_listable_factory import CdiscListableFactory
 
@@ -17,12 +16,14 @@ def xsd_files():
     return [base.joinpath(xsd) for xsd in xsds]
 
 
-
 if __name__ == '__main__':
-    database_info = DataBaseInfo.factory(
-        dict(host="dev-03.cluster-c9qe4y0vrvda.rds.cn-northwest-1.amazonaws.com.cn", port=3306,
-             user='root', pwd='8YTJWOuA7XRK17wRQnw4',
-             database='eclinical_edc_dev_846'))
+    database_info = DataBaseInfo.factory(dict(
+        host="",  # 数据库主机 dev03
+        port=3306,  # 数据库端口号
+        user="",  # 数据库用户名
+        pwd="",  # 数据库密码
+        database=""  # 数据库库名 eclinical_edc_dev_846
+    ))
     data_source = SubjectDataResource(database_info)
     factory = CdiscListableFactory(data_source, xsd_files())
 
