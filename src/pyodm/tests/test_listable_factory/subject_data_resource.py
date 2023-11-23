@@ -3,7 +3,7 @@ import cjen
 from cjen.nene.helper import FileHelper
 
 from pyodm.core.source.abstract_database_source import AbstractDataBaseSource
-from pyodm.unit_tests.test_listable_factory.mappers.subject_mapper import SubjectMapper
+from pyodm.tests.test_listable_factory.mappers.subject_mapper import SubjectMapper
 
 
 class SubjectDataResource(AbstractDataBaseSource):

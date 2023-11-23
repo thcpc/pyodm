@@ -3,7 +3,7 @@ import pytest
 
 from pyodm.core.source.path_source import PathSource
 from pyodm.factory.cdisc_xml_specification_factory import CdiscXMLSpecificationFactory
-from pyodm.unit_tests.test_cdisc_factory.common_assert import assert_case2, assert_case6, assert_case5, assert_case4, \
+from pyodm.tests.test_cdisc_factory.common_assert import assert_case2, assert_case6, assert_case5, assert_case4, \
     assert_case3
 
 

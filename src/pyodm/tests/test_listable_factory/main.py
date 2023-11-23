@@ -6,7 +6,7 @@ from cjen.nene.database_info import DataBaseInfo
 from pyodm.core.xml.writer.cdisc_xml_writer import CdiscXmlWriter
 from pyodm.factory.cdisc_listable_factory import CdiscListableFactory
 
-from pyodm.unit_tests.test_listable_factory.subject_data_resource import SubjectDataResource
+from pyodm.tests.test_listable_factory.subject_data_resource import SubjectDataResource
 from pyodm.utils.path_utils import PathUtils
 
 
@@ -15,6 +15,7 @@ def xsd_files():
     xsds = ["ODM-admindata.xsd", "ODM-clinicaldata.xsd", "ODM-foundation.xsd",
             "ODM-protocol.xsd", "ODM-referencedata.xsd", "ODM-study.xsd"]
     return [base.joinpath(xsd) for xsd in xsds]
+
 
 
 if __name__ == '__main__':
