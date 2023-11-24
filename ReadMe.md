@@ -188,7 +188,7 @@ branches = [
 ## 未来计划
 1. JOSN 格式的 ODM 数据支持
 2. ODM 输入到数据库
-3. ODM 通过 eClinical5.0 接口导入
+3. ODM 通过接口导入
 4. ODM 对象 多线程，多数据源读取
 5. ODM 对象操作：append, replace, join
 6. ManyElements 的 each, find_all 等功能函数
