@@ -18,7 +18,7 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 ### Attribute()
 #### 定义
 定义改成员变量为属性
-![Pasted image 20231121102155.png](images/Pasted image 20231121102155.png)
+![Pasted image 20231121102155.png](images/20231121102155.png)
 #### API
 | Name | 成员类型 | 含义 |
 | --- | ----- | ---- |
@@ -28,7 +28,7 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 ### OneElement()
 #### 定义
 定义该成员变量为 该子元素只有一个
-![Pasted image 20231124143755.png](images/Pasted image 20231124143755.png)
+![Pasted image 20231124143755.png](images/20231124143755.png)
 - ? (meaning optional, with zero or one occurrence)
 #### API
 | Name | 成员类型 | 含义 |
@@ -56,7 +56,7 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 # 主要的功能类说明
 
 ## Factory
-![img.png](images/img.png)
+![img.png](https://github.com/thcpc/pyodm/blob/master/images/img.png)
 
 ### odm_process 方法流程图
 ![img_1.png](images/img_1.png)
