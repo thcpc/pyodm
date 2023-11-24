@@ -186,7 +186,7 @@ branches = [
 4. ODM 对象，导出为 XML
 
 ## 未来计划
-1. JOSN 格式的 ODM 数据支持
+1. JSON 格式的 ODM 数据支持
 2. ODM 输入到数据库
 3. ODM 通过接口导入
 4. ODM 对象 多线程，多数据源读取
