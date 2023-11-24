@@ -27,8 +27,11 @@ class CdiscXMLSpecificationFactory(AbstractCdiscXMLFactory):
         self._specification_files = specification_files if specification_files else self.default_description_files()
 
     def clazz_reader(self):
+        """
+        使用 Specification 的方式 解析 ODM Class 信息
+        :return:
+        :rtype:
+        """
         CdiscConfigurationSpecificationReader().load_cdisc_definition(self, self._specification_files)
 
-    def data_reader(self) -> XMLDataReader:
-        return XMLDataReader(self)
 

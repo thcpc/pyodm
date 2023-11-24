@@ -1,50 +1,88 @@
-## Features
+# ODM Class
+ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.0)
+## ODM Class 定义方式
+### 1. 静态方式(Specification)
+ - step1. 定义 ODM Class的代码文件
+ - step2. 定义 ODM 元素和ODM Class的映射文件
+[示例](https://github.com/thcpc/pyodm/tree/master/example/custom_odm_factory)
 
-- core
-  
-  读取 XSD 文件，读取 ODM XML 文件的实现
+### 2. 动态方式(Xsd)
+ - step1. 定义 XSD 文件
+ - Factory 调用时会动态生成
+ 
+## 成员变量
+成员变量主要有三种类型
+- Attribute
+- OneElement
+- ManyElements
+### Attribute()
+#### 定义
+定义改成员变量为属性
+![Pasted image 20231121102155.png](images/Pasted image 20231121102155.png)
+#### API
+| Name | 成员类型 | 含义 |
+| --- | ----- | ---- |
+| name | property | Attribute 名 |
+| value | property | Attribute 的值 |
 
-- factory
-  
-  定义了 生成ODM对象的工厂对象
+### OneElement()
+#### 定义
+定义该成员变量为 该子元素只有一个
+![Pasted image 20231124143755.png](images/Pasted image 20231124143755.png)
+- ? (meaning optional, with zero or one occurrence)
+#### API
+| Name | 成员类型 | 含义 |
+| --- | ----- | ---- |
+| name | property | Element 名 |
+| value | property | 如果 Element 有文本值 |
+| is_blank | method | 返回该元素是否有文本 |
+### ManyElements()
+#### 定义
+定义该成员变量的子元素可能有多个
+![[Pasted image 20231124143855.png]]
+- * (meaning optional, with zero or more occurrences)
+- + (meaning required, with one or more occurrences)
+#### API
+| Name | 成员类型 | 参数 |含义 |
+| --- | ----- | ---- | --- |
+| name | property | 无 |Element 名 |
+| value | property | 无 |如果 Element 有文本值 |
+| array | property| 无 |返回该元素的列表|
+| count | property| 无 | 元素个数 |
+| index| method | int i |返回 指定位置的元素 |
+| first| method | 无 | 返回 第一个元素 |
+| find | method | \*\*attributes | 返回符合属性的第一个 | 
 
-- model
-  
-  ODM 模型的数据类型
+# 主要的功能类说明
 
-- utils
-  
-  辅助的工具方法
+## Factory
+![img.png](images/img.png)
 
-## core
+### odm_process 方法流程图
+![img_1.png](images/img_1.png)
+## Loader
+![img_2.png](images/img_2.png)
+## Reader
+![img_3.png](images/img_3.png)
+## Source
+![img_4.png](images/img_4.png)
 
-### AbstractDataReader
+## 依赖关系
+![img_5.png](images/img_5.png)
+# 应用场景
+## 读取标准的 ODM data 的XML文件
+[示例数据 Example1 ](https://wiki.cdisc.org/display/ODM2/ItemGroupData)
+- [CdiscXsdFactory](https://github.com/thcpc/pyodm/tree/master/example/xsd_factory)
+- [CdiscSpecificationFactory](https://github.com/thcpc/pyodm/tree/master/example/specification_factory)
 
-读去数据的抽象方法，定义抽象方法 read()
+## 数据库中读取数据，并生成XML文件
+[CdiscListableFactory](https://github.com/thcpc/pyodm/tree/master/example/database)
+## 自定义结构，并读取 XML 数据
+[示例](https://github.com/thcpc/pyodm/tree/master/example/custom_odm_factory)
 
-### AbstractXMLDataReader
-
-读取 XML 文件的实现
-
-### CdiscDataSpecificationReader
-
-根据 Specifincation的方式，读取XML数据， 实例化 ODM 对象
-
-### CdiscDataXsdReader
-
-根据 XSD 的方式，读取XML数据， 实例化 ODM 对象
-
-### AbstractConfigurationReader
-
-读取配置文件的抽象方法定义，load_cdisc_definition()
-
-### CdiscConfigurationSpecificationReader
-
-读取 Specifincation 配置文件
-
-定义例子如下
-
+### Step2. 定义 ODM 对象的配置的XML文件
 ```xml
+<?xml version="1.0" encoding="UTF-8"?>
 <CDISC>
     <ODM modulePath="pyodm.model.v2.cdisc.ODM" clazz="ODM"/>
     <AuditRecord modulePath="pyodm.model.v2.cdisc.AuditRecord" clazz="AuditRecord"/>
@@ -52,87 +90,20 @@
     <DateTimeStamp modulePath="pyodm.model.v2.cdisc.DateTimeStamp" clazz="DateTimeStamp"/>
     <ItemData modulePath="pyodm.model.v2.cdisc.ItemData" clazz="ItemData"/>
     <ItemGroupData modulePath="pyodm.model.v2.cdisc.ItemGroupData" clazz="ItemGroupData"/>
-    <LocationRef modulePath="pyodm.model.v2.cdisc.LocationRef" clazz="LocationRef"/>
-    <Query modulePath="pyodm.model.v2.cdisc.Query" clazz="Query"/>
-    <ReasonForChange modulePath="pyodm.model.v2.cdisc.ReasonForChange" clazz="ReasonForChange"/>
-    <SourceID modulePath="pyodm.model.v2.cdisc.SourceID" clazz="SourceID"/>
-    <SubjectData modulePath="pyodm.model.v2.cdisc.SubjectData" clazz="SubjectData"/>
-    <UserRef modulePath="pyodm.model.v2.cdisc.UserRef" clazz="UserRef"/>
-    <SiteRef modulePath="pyodm.model.v2.cdisc.SiteRef" clazz="SiteRef"/>
-    <StudyEventData modulePath="pyodm.model.v2.cdisc.StudyEventData" clazz="StudyEventData"/>
-    <Value modulePath="pyodm.model.v2.cdisc.Value" clazz="Value"/>
-
 </CDISC>
 ```
 
-### CdiscConfigurationXsdReader
+#### modulePath
+class 的 package 路径
+#### clazz
+class 名
 
-读取 ODM XSD 格式的配置文件  [CDISC ODM标准2.0 XSD](https://github.com/cdisc-org/DataExchange-ODM/tree/main/schema)
-
-### CdiscXmlWriter
-
-ODM 对象导出为 XML 文件
-
-
+### Step3. CdiscSpecificationFactory 加载ODM
+[[pyodm#CdiscSpecificationFactory 生成 ODM 对象| CdiscSpecificationFactory]]
 
 
 
-## factory
-
-### CdiscRegistry
-
-注册 ODM 元素的 Class 类型
-
-### AbstractCdiscFactory
-
-生成ODM的抽象工程类型
-
-### AbstractCdiscXMLFactory
-
-通过 XML 生成ODM的工程对象的类型，定义了生成模板
-
-1. 获取 Class 类型 class_reader
-
-2. 读取 XML 文件转化为ODM 对象  data_reader
-
-### CdiscSpecificationFactory
-
-Class 类型的对象定义在Specification 中
-
-### CdiscXsdFactory
-
-Class 类型的定义在XSD文件中
-
-## model
-
-### Attribute
-
-ODM 标准中对应的 Element 的 Attribute属性
-
-### OneElement
-
-- ? (meaning optional, with zero or one occurrence)
-  
-  对应表示为？的子元素
-  
-  
-
-### ManyElements
-
-- /* (meaning optional, with zero or more occurrences)
-- /+ (meaning required, with one or more occurrences)
-
-     对应标识为*或+的子元素
-
-### CdiscODMEntity
-
-自定义ODM的元素的时候，必须继承的元类
-
-
-
-## utils
-
-### Forest
+# Forest
 
 自定义数据结构, 把传入的列表数据转为为树形结构
 根据传入的列表，生成不同可能生成多个树
@@ -199,8 +170,8 @@ Forsest 的层级，level = degree-1
 branches = [
     [dict(id=1), dict(id=2),dict(id=3)],
     [dict(id=1), dict(id=2),dict(id=3),dict(id=6)],
-    [dict(id=A1), dict(id=A2),dict(id=A3),dict(id=A7)],
-    [dict(id=A1), dict(id=A4),dict(id=5)]
+    [dict(id="A1"), dict(id="A2"),dict(id="A3"),dict(id="A7")],
+    [dict(id="A1"), dict(id="A4"),dict(id=5)]
 ]
 ```
 
@@ -208,18 +179,17 @@ branches = [
 
 # Release
 
-## Release 1.0.0-beta
+## Release 1.0.0
+1. 根据 XSD 配置，读取 ODM XML 数据，生成 ODM 对象
+2. 根据 ODM Class 定义，读取 ODM XML 数据，生成 ODM 对象
+3. 读取 数据库数据， 转化为 ODM 对象 
+4. ODM 对象，导出为 XML
 
-第一版本,内测
+## 未来计划
+1. JOSN 格式的 ODM 数据支持
+2. ODM 输入到数据库
+3. ODM 通过 eClinical5.0 接口导入
+4. ODM 对象 多线程，多数据源读取
+5. ODM 对象操作：append, replace, join
+6. ManyElements 的 each, find_all 等功能函数
 
-## Release 1.0.0-beta1
-
-增加了Node 模糊匹配 
-
-## Release 1.0.0-beat2
-
-增加了Node 模糊匹配,更新了关联方法
-
-## Release 1.0.0-beat3
-
-增加了 ODM 生成 Factory 对象

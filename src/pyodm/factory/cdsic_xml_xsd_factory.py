@@ -25,4 +25,9 @@ class CdiscXMLXsdFactory(AbstractCdiscXMLFactory):
         self._xsd_files = xsd_files if xsd_files else self.default_description_files()
 
     def clazz_reader(self):
+        """
+        使用 XSD 的方式 解析 ODM Class 信息
+        :return:
+        :rtype:
+        """
         CdiscConfigurationXsdReader().load_cdisc_definition(self, self._xsd_files)

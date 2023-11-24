@@ -20,6 +20,12 @@ class AbstractCdiscXMLFactory(AbstractHierarchyFactory, ABC):
         self._data_file = data_file_path.read()
         self.data_loader = XmlPathLoader(self._data_file)
 
-    def data_reader(self) -> XMLDataReader: return XMLDataReader(self)
+    def data_reader(self) -> XMLDataReader:
+        """
+        指定了解析 ODM XML Data 的数据方式
+        :return:
+        :rtype:
+        """
+        return XMLDataReader(self)
 
 

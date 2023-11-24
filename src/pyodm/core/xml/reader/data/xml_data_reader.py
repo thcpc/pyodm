@@ -61,6 +61,6 @@ class XMLDataReader(AbstractDataReader):
             one_element.name = sub_cdisc_name
             setattr(cdisc_node, sub_cdisc_name, one_element)
 
-    def read(self, resource: AbstractDataLoader):
-        tree = resource.load()
+    def read(self, loader: AbstractDataLoader):
+        tree = loader.load()
         return self._parse(tree.getroot(), EtreeUtils.localname(tree.getroot()))

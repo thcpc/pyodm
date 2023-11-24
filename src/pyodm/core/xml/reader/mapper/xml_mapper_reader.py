@@ -49,5 +49,5 @@ class XMLMapperReader(AbstractDataReader):
     def _contain_elements(self, element_name, class_name) -> bool:
         return element_name in ClassUtils.elements_name(clazz=self.registry.get(class_name))
 
-    def _load(self, resource: AbstractDataLoader) -> ElementTree:
-        return resource.load()
+    def _load(self, loader: AbstractDataLoader) -> ElementTree:
+        return loader.load()
