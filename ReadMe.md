@@ -18,7 +18,7 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 ### Attribute()
 #### 定义
 定义改成员变量为属性
-![Pasted image 20231121102155.png](images/20231121102155.png)
+![Pasted image 20231121102155.png](https://github.com/thcpc/pyodm/blob/master/images/20231121102155.png)
 #### API
 | Name | 成员类型 | 含义 |
 | --- | ----- | ---- |
@@ -28,7 +28,7 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 ### OneElement()
 #### 定义
 定义该成员变量为 该子元素只有一个
-![Pasted image 20231124143755.png](images/20231124143755.png)
+![Pasted image 20231124143755.png](https://github.com/thcpc/pyodm/blob/master/images/20231124143755.png)
 - ? (meaning optional, with zero or one occurrence)
 #### API
 | Name | 成员类型 | 含义 |
@@ -59,13 +59,13 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 ![img.png](https://github.com/thcpc/pyodm/blob/master/images/img.png)
 
 ### odm_process 方法流程图
-![img_1.png](images/img_1.png)
+![img_1.png](https://github.com/thcpc/pyodm/blob/master/images/img_1.png)
 ## Loader
-![img_2.png](images/img_2.png)
+![img_2.png](https://github.com/thcpc/pyodm/blob/master/images/img_2.png)
 ## Reader
-![img_3.png](images/img_3.png)
+![img_3.png](https://github.com/thcpc/pyodm/blob/master/images/img_3.png)
 ## Source
-![img_4.png](images/img_4.png)
+![img_4.png](https://github.com/thcpc/pyodm/blob/master/images/img_4.png)
 
 ## 依赖关系
 ![img_5.png](images/img_5.png)
@@ -80,26 +80,7 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 ## 自定义结构，并读取 XML 数据
 [示例](https://github.com/thcpc/pyodm/tree/master/example/custom_odm_factory)
 
-### Step2. 定义 ODM 对象的配置的XML文件
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<CDISC>
-    <ODM modulePath="pyodm.model.v2.cdisc.ODM" clazz="ODM"/>
-    <AuditRecord modulePath="pyodm.model.v2.cdisc.AuditRecord" clazz="AuditRecord"/>
-    <ClinicalData modulePath="pyodm.model.v2.cdisc.ClinicalData" clazz="ClinicalData"/>
-    <DateTimeStamp modulePath="pyodm.model.v2.cdisc.DateTimeStamp" clazz="DateTimeStamp"/>
-    <ItemData modulePath="pyodm.model.v2.cdisc.ItemData" clazz="ItemData"/>
-    <ItemGroupData modulePath="pyodm.model.v2.cdisc.ItemGroupData" clazz="ItemGroupData"/>
-</CDISC>
-```
 
-#### modulePath
-class 的 package 路径
-#### clazz
-class 名
-
-### Step3. CdiscSpecificationFactory 加载ODM
-[[pyodm#CdiscSpecificationFactory 生成 ODM 对象| CdiscSpecificationFactory]]
 
 
 
