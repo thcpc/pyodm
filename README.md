@@ -165,6 +165,10 @@ branches = [
 2. 根据 ODM Class 定义，读取 ODM XML 数据，生成 ODM 对象
 3. 读取 数据库数据， 转化为 ODM 对象 
 4. ODM 对象，导出为 XML
+## Release 1.0.1
+增加了ReadME
+## Release 1.0.2
+增加了ReadME
 
 ## 未来计划
 1. JSON 格式的 ODM 数据支持
