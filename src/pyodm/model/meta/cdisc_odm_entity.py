@@ -8,19 +8,23 @@ class CdiscODMEntity(metaclass=EntityMeta):
     """
     def __init__(self):
         self._name = ""
-        self.value = None
+        self._value = None
         for name, instance in vars(self.__class__).items():
             if isinstance(instance, Model.Attribute) \
                     or isinstance(instance, Model.OneElement) \
                     or isinstance(instance, Model.ManyElements):
                 setattr(self, name, instance.__class__())
 
-    @property
-    def name(self):
+
+    def get_name(self):
         return self._name
 
-    @name.setter
-    def name(self, value):
+
+    def get_value(self): return self._value
+
+    def set_value(self, value): self._value = value
+
+    def set_name(self, value):
         self._name = value
 
-    def is_blank(self) -> bool: return self.value is None
+    def is_blank(self) -> bool: return self.get_value() is None

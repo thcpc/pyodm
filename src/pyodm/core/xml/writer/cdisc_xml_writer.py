@@ -35,7 +35,7 @@ class CdiscXmlWriter:
 
         if not isinstance(self.cdisc, Meta.CdiscODMEntity):
             raise XmlWriterException("cdisc should instance of CdiscODMEntity")
-        element = etree.Element(self.cdisc.name)
+        element = etree.Element(self.cdisc.get_name())
 
         for action in [self._entity, self._many_element, self._one_element]:
             status = action(cdisc=self.cdisc, element=element)
@@ -51,9 +51,9 @@ class CdiscXmlWriter:
 
     @cdisc(model=Meta.CdiscODMEntity)
     def _entity(self, cdisc, element: etree._Element = None) -> WriteStatus:
-        element = etree.Element(cdisc.name) if element is None else element
+        element = etree.Element(cdisc.get_name) if element is None else element
         if not cdisc.is_blank():
-            element.text = cdisc.value
+            element.text = cdisc.get_value()
         for name, cdisc_instance in vars(cdisc).items():
             if not self.cdisc_model(cdisc_instance): continue
             self._vars_cdisc(cdisc_instance, element=element)
@@ -61,25 +61,25 @@ class CdiscXmlWriter:
     @cdisc(model=Model.Attribute)
     def _attribute(self, cdisc: Model.Attribute, element: etree._Element):
         if cdisc.no_use(): return WriteStatus.IGNORE
-        element.attrib[cdisc.name] = str(cdisc.value)
+        element.attrib[cdisc.get_name()] = str(cdisc.get_value())
 
     @cdisc(model=Model.OneElement)
     def _one_element(self, cdisc: Model.OneElement, element: etree._Element) -> WriteStatus:
         if cdisc.no_use(): return WriteStatus.IGNORE
         for name, cdisc_instance in vars(cdisc).items():
             if not self.cdisc_model(cdisc_instance): continue
-            if not cdisc.is_blank(): element.text = cdisc.value
+            if not cdisc.is_blank(): element.text = cdisc.get_value()
             self._vars_cdisc(cdisc_instance, element)
 
     @cdisc(model=Model.ManyElements)
     def _many_element(self, cdisc: Model.ManyElements, element: etree._Element) -> WriteStatus:
         if cdisc.no_use(): return WriteStatus.IGNORE
         for e in cdisc.array:
-            self._entity(e, etree.SubElement(element, cdisc.name))
+            self._entity(e, etree.SubElement(element, cdisc.get_name()))
 
     def _vars_cdisc(self, cdisc, element: etree._Element):
         for action in [self._attribute, self._many_element, self._one_element]:
             status = action(cdisc=cdisc, element=element)
             if status != WriteStatus.PASS: break
         if status == WriteStatus.PASS:
-            self._entity(cdisc, etree.SubElement(element, cdisc.name))
+            self._entity(cdisc, etree.SubElement(element, cdisc.get_name()))

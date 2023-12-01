@@ -8,7 +8,7 @@ class CdiscModel:
         self._parent = None
 
     def find(self, **attributes):
-        raise Exception(f"{self.name} is not ManyElements, Only ManyElements have")
+        raise Exception(f"{self.get_name} is not ManyElements, Only ManyElements have")
 
     @property
     def preset_usage(self):
@@ -31,26 +31,29 @@ class CdiscModel:
         self._preset_usage = value
 
     def first(self):
-        raise Exception(f"{self.name} is not ManyElements, Only ManyElements have")
+        raise Exception(f"{self.get_name} is not ManyElements, Only ManyElements have")
 
     def index(self, i):
-        raise Exception(f"{self.name} is not ManyElements, Only ManyElements have")
+        raise Exception(f"{self.get_name} is not ManyElements, Only ManyElements have")
 
-    @property
-    def name(self):
+
+    def get_name(self):
         raise Exception("CdiscModel must defined name")
 
-    @property
-    def value(self):
-        raise Exception(f"{self.name} is not ManyElements, ManyElements is not have this method")
+
+    def set_name(self, value): self._name = value
+
+    def get_value(self):
+        raise Exception(f"{self.get_name()} is not ManyElements, ManyElements is not have this method")
+
 
     # TODO
     def each(self, usage, **attributes):
-        raise Exception(f"{self.name} is not ManyElements, Only ManyElements have")
+        raise Exception(f"{self.get_name()} is not ManyElements, Only ManyElements have")
 
     # TODO
     def select(self, **attributes):
-        raise Exception(f"{self.name} is not ManyElements, Only ManyElements have")
+        raise Exception(f"{self.get_name()} is not ManyElements, Only ManyElements have")
 
     def business(self):
         """
@@ -76,7 +79,7 @@ class CdiscModel:
             usage.business(self)
 
     def no_use(self):
-        return self.name == "NoUse!"
+        return self.get_name() == "NoUse!"
 
     @property
     def parent(self):

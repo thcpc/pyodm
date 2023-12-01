@@ -7,9 +7,9 @@ class EntityMeta(type):
         super().__init__(name, bases, attr_dict)
         for key, attr in attr_dict.items():
             if isinstance(attr, Model.Attribute):
-                attr.name = key
+                attr.set_name(key)
             if isinstance(attr, Model.OneElement):
-                attr.name = key
+                attr.set_name(key)
             if isinstance(attr, Model.ManyElements):
-                attr.name = key
+                attr.set_name(key)
 

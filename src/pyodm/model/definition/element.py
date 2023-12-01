@@ -1,4 +1,3 @@
-
 from pyodm.exceptions import ParserException
 from pyodm.model.definition.cdisc_model import CdiscModel
 
@@ -9,16 +8,15 @@ class ManyElements(CdiscModel):
     + (meaning required, with one or more occurrences)
     对应标识为*或+的子元素
     """
+
     def __init__(self):
         super().__init__()
         self._array = []
 
-    @property
-    def name(self):
+    def get_name(self):
         return self._name
 
-    @name.setter
-    def name(self, value):
+    def set_name(self, value):
         self._name = value
 
     @property
@@ -29,7 +27,8 @@ class ManyElements(CdiscModel):
         self._array.append(other)
 
     def index(self, i):
-        if i >= self.count: raise ParserException(f"{self.name} count = {self.count}, i({i}) should less than < {self.count}")
+        if i >= self.count: raise ParserException(
+            f"{self.get_name} count = {self.count}, i({i}) should less than < {self.count}")
         return self._array[i]
 
     def first(self):
@@ -52,7 +51,7 @@ class ManyElements(CdiscModel):
             for key, value in attributes.items():
                 finder = getattr(entity, key, None)
 
-                if finder is None or finder.no_use() or finder.value != value:
+                if finder is None or finder.no_use() or finder.get_value() != value:
                     bingo = False
                     break
             if bingo: return entity
@@ -72,21 +71,19 @@ class OneElement(CdiscModel):
     """
     ? (meaning optional, with zero or one occurrence)
     """
+
     def __init__(self):
         super().__init__()
         self._name = "NoUse!"
         self._value = None
 
-    @property
-    def name(self): return self._name
 
-    @name.setter
-    def name(self, value): self._name = value
+    def get_name(self): return self._name
 
-    @property
-    def value(self): return self._value
+    def set_name(self, value): self._name = value
 
-    @value.setter
-    def value(self, value): self._value = value
+    def get_value(self): return self._value
+
+    def set_value(self, value): self._value = value
 
     def is_blank(self) -> bool: return self._value is None
