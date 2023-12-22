@@ -1,0 +1,369 @@
+{
+  "igRocordList": [
+    {
+      "igId": 10869,
+      "igStatus": 0,
+      "subjectRecordDtoList": [
+        {
+          "currentVal": "1",
+          "change": true,
+          "isFillValue": true,
+          "hasSave": false,
+          "reason": "Change by rule",
+          "subjectItemId": 87648,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "autoValueEnable": true,
+          "useClear": false,
+          "operationDesc": "4,102"
+        },
+        {
+          "currentVal": "111",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87650,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "07-Dec-2023",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87652,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "Y",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87654,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "Y",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87681,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "on",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87686,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [
+            {
+              "id": 63128,
+              "tip": "\"Fatal\" should be checked when \"Outcome\" is \"Fatal\". Please correct or clarify.",
+              "createdByRequired": false
+            }
+          ],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "subjectItemId": 87687,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87688,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87689,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87690,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 132136,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "currentVal": "Y",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87692,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "RELATED TO SIGNS AND SYMPTOMS OF CRS",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87694,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "GRADE 2",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87658,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "Y",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 132134,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "AUTOIMMUNE DISORDER",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 132135,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "on",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87660,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "subjectItemId": 87662,
+          "subjectItemDisable": true,
+          "ruleTipDtoList": [
+            {
+              "id": 63088,
+              "tip": "Please select one item at least.",
+              "createdByRequired": false
+            }
+          ],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87664,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "currentVal": "on",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87665,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "subjectItemId": 87666,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87667,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87668,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87669,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87670,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87671,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "currentVal": "DOSE REDUCED",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87682,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "DOSE REDUCED",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87683,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "currentVal": "DOSE REDUCED",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87691,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "subjectItemId": 87672,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [
+            {
+              "id": 0,
+              "tip": "The data is required, please provide.",
+              "createdByRequired": true
+            }
+          ],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87684,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [
+            {
+              "id": 0,
+              "tip": "The data is required, please provide.",
+              "createdByRequired": true
+            }
+          ],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "currentVal": "on",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87673,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [],
+          "useClear": false,
+          "operationDesc": "1,102"
+        },
+        {
+          "subjectItemId": 87674,
+          "subjectItemDisable": true,
+          "ruleTipDtoList": [
+            {
+              "id": 63110,
+              "tip": "Please select one at least.",
+              "createdByRequired": false
+            }
+          ],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87675,
+          "subjectItemDisable": true,
+          "ruleTipDtoList": [
+            {
+              "id": 63112,
+              "tip": "Please select one at least.",
+              "createdByRequired": false
+            }
+          ],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "subjectItemId": 87676,
+          "subjectItemDisable": true,
+          "ruleTipDtoList": [
+            {
+              "id": 63114,
+              "tip": "Please select one at least.",
+              "createdByRequired": false
+            }
+          ],
+          "useClear": false,
+          "operationDesc": ",102"
+        },
+        {
+          "currentVal": "RECOVERED/RESOLVED",
+          "change": true,
+          "hasSave": false,
+          "subjectItemId": 87680,
+          "subjectItemDisable": false,
+          "ruleTipDtoList": [
+            {
+              "id": 63117,
+              "tip": "\"Outcome\" should be \"Recovering\", \"Not recovered / Not resolved\" or \"Unknown\" when \"Ongoing?\" response is \"Yes\". Please correct or clarify.",
+              "createdByRequired": false
+            }
+          ],
+          "useClear": false,
+          "operationDesc": "1,102"
+        }
+      ],
+      "subjectQuestionIds": []
+    }
+  ],
+  "recordReferrences": []
+}

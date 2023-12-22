@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+	<!--
+        +===========================================================================+
+        | HTTP JSON DEFINE |
+        +===========================================================================+
+    -->
+	<!--
+        ruleTipDtoList
+    -->
+	<xs:attributeGroup name="ruleTipDtoListDtoAttributeDefinition">
+		<xs:attribute name="id" type="xs:integer" use="required"/>
+		<xs:attribute name="tip" type="xs:string" use="required"/>
+		<xs:attribute name="createdByRequired" type="xs:boolean" use="required"/>
+	</xs:attributeGroup>
+
+	<xs:complexType name="EDCcomplexTypeDefinition-ruleTipDtoList">
+		<xs:attributeGroup ref="ruleTipDtoListDtoAttributeDefinition"/>
+	</xs:complexType>
+	<xs:element name="ruleTipDtoList" type="EDCcomplexTypeDefinition-ruleTipDtoList"/>
+
+	<!--
+        subjectRecordDtoList
+    -->
+
+	<xs:complexType name="EDCcomplexTypeDefinition-subjectRecordDtoList">
+		<xs:sequence>
+			<xs:element ref="ruleTipDtoList" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="subjectRecordDtoListAttributeDefinition"/>
+	</xs:complexType>
+
+	<xs:attributeGroup name="subjectRecordDtoListAttributeDefinition">
+		<xs:attribute name="beforeVal" type="xs:string" use="required"/>
+		<xs:attribute name="currentVal" type="xs:string" use="required"/>
+		<xs:attribute name="id" type="xs:integer" use="required"/>
+		<xs:attribute name="change" type="xs:boolean" use="required"/>
+		<xs:attribute name="hasSave" type="xs:boolean" use="required"/>
+		<xs:attribute name="reason" type="xs:string" use="required"/>
+		<xs:attribute name="subjectItemId" type="xs:integer" use="required"/>
+		<xs:attribute name="subjectItemDisable" type="xs:boolean" use="required"/>
+		<xs:attribute name="useClear" type="xs:boolean" use="required"/>
+		<xs:attribute name="operationDesc" type="xs:string" use="required"/>
+		<xs:attribute name="isFillValue" type="xs:boolean" use="optional" />
+		<xs:attribute name="autoValueEnable" type="xs:boolean" use="optional" />
+	</xs:attributeGroup>
+
+	<xs:element name="subjectRecordDtoList" type="EDCcomplexTypeDefinition-subjectRecordDtoList"/>
+
+	<!--
+        igRocordList
+    -->
+
+	<xs:complexType name="EDCcomplexTypeDefinition-igRocordList">
+		<xs:sequence>
+			<xs:element ref="subjectRecordDtoList" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="subjectQuestionIds" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="igRocordListDtoListAttributeDefinition"/>
+	</xs:complexType>
+
+
+	<xs:attributeGroup name="igRocordListDtoListAttributeDefinition">
+		<xs:attribute name="igId" type="xs:integer" use="required" />
+		<xs:attribute name="igStatus" type="xs:integer" use="required" />
+	</xs:attributeGroup>
+	<xs:element name="igRocordList" type="EDCcomplexTypeDefinition-igRocordList" />
+
+
+	<!--
+        subjectQuestionIds
+    -->
+
+	<xs:element name="subjectQuestionIds" type="EDCcomplexTypeDefinition-igRocordList" />
+	<!--
+        recordReferrences
+    -->
+	<xs:element name="recordReferrences" type="EDCcomplexTypeDefinition-igRocordList" />
+	<!--
+	 Data Entry Save 接口 的请求
+	-->
+	<xs:complexType name="EDCcomplexTypeDefinition-submitData">
+		<xs:sequence>
+			<xs:element ref="igRocordList" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="recordReferrences" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="submitData" type="EDCcomplexTypeDefinition-submitData"/>
+
+	<!---
+	 New Subject.propertyValueMap
+	-->
+	<xs:complexType name="EDCcomplexTypeDefinition-propertyValueMap">
+
+	</xs:complexType>
+	<xs:element name="propertyValueMap" type="EDCcomplexTypeDefinition-propertyValueMap"/>
+
+
+	<!---
+	 New Subject.newSubject
+	-->
+	<xs:attributeGroup name="newSubjectAttributeDefinition">
+		<xs:attribute name="name" type="xs:string" use="required" />
+		<xs:attribute name="studySiteId" type="xs:integer" use="required" />
+		<xs:attribute name="enrollPhase" type="xs:boolean" use="required" />
+		<xs:attribute name="visitDate" type="xs:long" use="required" />
+	</xs:attributeGroup>
+
+	<xs:complexType name="EDCcomplexTypeDefinition-newSubject">
+		<xs:sequence>
+			<xs:element ref="propertyValueMap"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="newSubjectAttributeDefinition"/>
+	</xs:complexType>
+
+	<xs:element name="newSubject" type="EDCcomplexTypeDefinition-newSubject"/>
+
+
+</xs:schema>
