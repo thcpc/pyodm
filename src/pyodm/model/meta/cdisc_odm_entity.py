@@ -1,5 +1,6 @@
 from pyodm.model.meta.entity_meta import EntityMeta
 import pyodm.model.definition as Model
+#
 
 
 class CdiscODMEntity(metaclass=EntityMeta):
@@ -15,10 +16,8 @@ class CdiscODMEntity(metaclass=EntityMeta):
                     or isinstance(instance, Model.ManyElements):
                 setattr(self, name, instance.__class__())
 
-
     def get_name(self):
         return self._name
-
 
     def get_value(self): return self._value
 
@@ -28,3 +27,7 @@ class CdiscODMEntity(metaclass=EntityMeta):
         self._name = value
 
     def is_blank(self) -> bool: return self.get_value() is None
+
+    def as_stream(self):
+        from pyodm.utils.stream import Stream
+        return Stream(self)

@@ -22,8 +22,10 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 #### API
 | Name | 成员类型 | 含义 |
 | --- | ----- | ---- |
-| name | property | Attribute 名 |
-| value | property | Attribute 的值 |
+| get_name | method | 获取 Attribute 名 |
+| get_value | method | 获取 Attribute 的值 |
+| set_name | method | 设置 Attribute 名 |
+| set_value | method | 设置 Attribute 的值 |
 
 ### OneElement()
 #### 定义
@@ -33,8 +35,10 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 #### API
 | Name | 成员类型 | 含义 |
 | --- | ----- | ---- |
-| name | property | Element 名 |
-| value | property | 如果 Element 有文本值 |
+| get_name | method | 获取 Element 名 |
+| get_value | method | 获取 Element 的值，无返回 None |
+| set_name | method | 设置 Element 名 |
+| set_value | method | 设置 Element 的值 |
 | is_blank | method | 返回该元素是否有文本 |
 ### ManyElements()
 #### 定义
@@ -45,8 +49,10 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 #### API
 | Name | 成员类型 | 参数 |含义 |
 | --- | ----- | ---- | --- |
-| name | property | 无 |Element 名 |
-| value | property | 无 |如果 Element 有文本值 |
+| get_name | method | 获取 Element 名 |
+| get_value | method | 获取 Element 的值，无返回 None |
+| set_name | method | 设置 Element 名 |
+| set_value | method | 设置 Element 的值 |
 | array | property| 无 |返回该元素的列表|
 | count | property| 无 | 元素个数 |
 | index| method | int i |返回 指定位置的元素 |
@@ -69,6 +75,7 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 
 ## 依赖关系
 ![img_5.png](images/img_5.png)
+
 # 应用场景
 ## 读取标准的 ODM data 的XML文件
 [示例数据 Example1 ](https://wiki.cdisc.org/display/ODM2/ItemGroupData)
@@ -80,6 +87,8 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 ## 自定义结构，并读取 XML 数据
 [示例](https://github.com/thcpc/pyodm/tree/master/example/custom_odm_factory)
 
+## 从 JSON 中读取文件 ODM 数据
+[示例](https://github.com/thcpc/pyodm/tree/master/example/json_factory)
 
 
 
@@ -169,6 +178,10 @@ branches = [
 增加了ReadME
 ## Release 1.0.2
 增加了ReadME
+
+## Release 1.0.3
+1. 修改了 ODM 对象 获取 name 或 text 的方法为get_name(),set_name(),get_value(),set_value()
+2. 增加了 as_stream 来查询ODM对象
 
 ## 未来计划
 1. JSON 格式的 ODM 数据支持

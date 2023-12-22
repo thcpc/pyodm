@@ -21,3 +21,7 @@ class ClassUtils:
             return isinstance(value, OneElement) or isinstance(value, ManyElements)
 
         return list(ClassUtils.filter(clazz, condition).keys())
+
+    @staticmethod
+    def get(entity, key: str):
+        return entity.__dict__.get(key)

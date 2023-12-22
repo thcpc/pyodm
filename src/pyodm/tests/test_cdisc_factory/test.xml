@@ -16,6 +16,19 @@
             </Query>
           </ItemData>
         </ItemGroupData>
+        <ItemGroupData ItemGroupOID="IG.HEMATOLOGY">
+          <ItemGroupData ItemGroupOID="IG.WBC">
+            <ItemData ItemOID="IT.WBC">
+              <Value>5.2</Value>
+            </ItemData>
+            <ItemData ItemOID="IT.WBC_UNITS">
+              <Value>10*3/uL</Value>
+            </ItemData>
+          </ItemGroupData>
+          <ItemGroupData ItemGroupOID="IT.RBC">
+            <ItemData ItemOID="IT.RBC" IsNull="Yes"/>
+          </ItemGroupData>
+        </ItemGroupData>
       </StudyEventData>
     </SubjectData>
   </ClinicalData>
