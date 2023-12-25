@@ -201,6 +201,11 @@ branches = [
 1. 修改了 ODM 对象 获取 name 或 text 的方法为get_name(),set_name(),get_value(),set_value()
 2. 增加了 as_stream 来查询ODM对象
 
+## Release 1.0.3.1
+
+1. 修改了 odm_dfs 搜索会忽略掉 odm 对象的BUG
+2. 修改了 merge 时，会忽略掉 odm 对象 的 BUG
+
 ## 未来计划
 1. JSON 格式的 ODM 数据支持
 2. ODM 输入到数据库
