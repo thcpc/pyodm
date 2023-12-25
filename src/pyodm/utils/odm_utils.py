@@ -28,7 +28,10 @@ class OdmUtils:
                     x_element.set_name(x_name)
             elif OdmUtils.is_one_element(x_element):
                 #  如果是 OneElement 的话，则表示该Element 并末使用，跳过该Element
-                pass
+                entity_element = ClassUtils.get(merged_entity, x_name)
+                if entity_element is not None and not OdmUtils.is_one_element(entity_element):
+                    setattr(base, x_name, entity_element)
+
             elif OdmUtils.is_many_elements(x_element) and OdmUtils.is_many_elements(entity_element):
                 if not x_element.no_use():
                     length = len(x_element.array)

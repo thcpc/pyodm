@@ -76,6 +76,24 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 ## 依赖关系
 ![img_5.png](images/img_5.png)
 
+## ODM 对象的操作
+
+## append
+只针对 ManyElements 元素, 针对该 Element类型，新增一个Element
+
+## merge
+### ODM实体属性合并规则
+ 1. 合并对象已有属性不会更新
+ 2. 新增的属性会更新至合并对象
+### ManyElements 类型的合并规则
+
+
+## update
+更新 ODM 属性
+
+## update_text
+更新 ODM 的文本
+
 # 应用场景
 ## 读取标准的 ODM data 的XML文件
 [示例数据 Example1 ](https://wiki.cdisc.org/display/ODM2/ItemGroupData)

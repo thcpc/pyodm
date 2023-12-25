@@ -1,3 +1,4 @@
+from pyodm.utils.odm_utils import OdmUtils
 from pyodm.utils.search.dfs import DFS
 import pyodm.model.definition as Model
 
@@ -18,4 +19,6 @@ class ODMDfs(DFS):
             elif isinstance(element, Model.ManyElements):
                 for i in element.array:
                     __neighbor.append(i)
+            elif OdmUtils.is_entity(element):
+                __neighbor.append(element)
         return __neighbor
