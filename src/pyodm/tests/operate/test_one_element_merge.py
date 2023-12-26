@@ -29,7 +29,7 @@ def test_case1_data2():
 def test_case1(test_case1_data1, test_case1_data2):
 
     base = test_case1_data1.as_stream().find(_lambda=Finder().element("ClinicalData").Lambda())
-    base.merge("ClinicalData", test_case1_data2)
+    base.merge(test_case1_data2)
     out_put(test_case1_data1)
     site = test_case1_data1.as_stream().find(_lambda=Finder().element("SiteRef").Lambda()).get()
     assert site.LocationOID.get_value() == 'D001'

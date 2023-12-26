@@ -78,20 +78,24 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 
 ## ODM 对象的操作
 
-## append
-只针对 ManyElements 元素, 针对该 Element类型，新增一个Element
+### append
+只针对 ManyElements 元素,针对该 Element类型,新增一个Element
 
-## merge
-### ODM实体属性合并规则
- 1. 合并对象已有属性不会更新
- 2. 新增的属性会更新至合并对象
-### ManyElements 类型的合并规则
+### merge
+前提是 被合并对象 odm_element 与 合并对象的 根节点一致
+![odm merge.jpg](images/odm merge.jpg)
 
+### replace
+替换指定的子元素
+1. 子元素为 OneElement 和 实例直接替换
+2. 子元素为 ManyElements
+    - 为空，则直接添加
+    - 不为空，查找相似的替换
 
-## update
+### update
 更新 ODM 属性
 
-## update_text
+### update_text
 更新 ODM 的文本
 
 # 应用场景
@@ -205,6 +209,7 @@ branches = [
 
 1. 修改了 odm_dfs 搜索会忽略掉 odm 对象的BUG
 2. 修改了 merge 时，会忽略掉 odm 对象 的 BUG
+3. 新增了 replace 操作
 
 ## 未来计划
 1. JSON 格式的 ODM 数据支持

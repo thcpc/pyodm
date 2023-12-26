@@ -46,22 +46,47 @@ class Optional:
         self._data.set_value(value)
         return self
 
-    def merge(self, name, odm_element):
+    def merge(self, odm_element):
         """
         合并 两个 ODM ELEMENT
-        前提是 odm_element 和 当前的 element 相同
+        前提是 被合并对象 odm_element 与 合并对象的 根节点一致
         OneElement ,以当前元素为基准，合并属性，并且 合并子元素
         ManyElement , 在原有的元素上，添加新的元素
-        :param name:
-        :type name:
         :param odm_element:
         :type odm_element:
         :return:
         :rtype:
         """
-        # if self._data.get_name() != odm_element.get_name():
-        #     raise Exception(f'{self._data.get_name()} is different {odm_element.get_name()}')
+        if self._data.get_name() != odm_element.get_name():
+            raise Exception(f'{self._data.get_name()} is different {odm_element.get_name()}')
         OdmUtils.merge(self._data, odm_element)
+
+    def replace(self, name, odm_element):
+        """
+        替换指定的子元素
+        :param name: element name
+        :type name: str
+        :param odm_element: 替换的元素
+        :type odm_element:
+        :return:
+        :rtype:
+        """
+        if self._data.__dict__.get(name) is None: raise Exception(f'{self._data.get_name()} have not element {name}')
+        replaced = self._data.__dict__.get(name)
+        """处理 OneElement 和 实例 直接替换"""
+        if OdmUtils.is_entity(replaced) or OdmUtils.is_one_element(replaced):
+            setattr(self._data, name, odm_element)
+        """处理ManyElements"""
+        if OdmUtils.is_many_elements(replaced):
+            """如果 为空，则直接增加一个项 """
+            if OdmUtils.useless(self._data, name):
+                self.append(name, odm_element)
+            else:
+                """如果 不为空，则查找相似的替换 """
+                for i in range(len(replaced.array)):
+                    if OdmUtils.like(replaced.index(i), odm_element):
+                        replaced.array[i] = odm_element
+                        break
 
     def append(self, name, odm_element):
         """
@@ -70,6 +95,7 @@ class Optional:
         :rtype:
         """
         if OdmUtils.is_many_elements(self._data.__dict__.get(name)):
+            if OdmUtils.useless(self._data, name):  self._data.__dict__.get(name).set_name(name)
             OdmUtils.append(self._data.__dict__.get(name), odm_element)
         else:
             raise Exception(f"{name} is not ManyElements")

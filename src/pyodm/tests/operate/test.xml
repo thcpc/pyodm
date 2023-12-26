@@ -1,6 +1,5 @@
 <ClinicalData>
   <SubjectData SubjectKey="D001001">
-    <SiteRef LocationOID="D001"/>
     <StudyEventData StudyEventOID="Screening">
       <ItemGroupData ItemGroupOID="HeaderLog" ItemGroupRepeatKey="0">
         <ItemData ItemOID="SVDAT">

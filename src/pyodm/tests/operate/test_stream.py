@@ -105,7 +105,7 @@ def test_stream_merge_attribute1(test_data, data_of_attribute1):
     item_group_data = test_data.as_stream().find(_lambda=lambda
         x: x.get_name() == 'ItemGroupData' and x.ItemGroupRepeatKey.get_value() == '0' and x.ItemGroupOID.get_value() == 'Enrollment')
 
-    item_group_data.merge("ItemGroupData", data_of_attribute1)
+    item_group_data.merge(data_of_attribute1)
     x = test_data.as_stream().find(_lambda=lambda
         x: x.get_name() == 'ItemGroupData' and x.ItemGroupRepeatKey.get_value() == '0' and x.ItemGroupOID.get_value() == 'Enrollment').get()
 
@@ -122,7 +122,7 @@ def test_stream_merge_attribute2(test_data, data_of_attribute2):
     item_group_data = Stream(test_data).find(_lambda=lambda
         x: x.get_name() == 'ItemGroupData' and x.ItemGroupRepeatKey.get_value() == '0' and x.ItemGroupOID.get_value() == 'Enrollment')
 
-    item_group_data.merge("ItemGroupData", data_of_attribute2)
+    item_group_data.merge(data_of_attribute2)
     x = Stream(test_data).find(_lambda=lambda
         x: x.get_name() == 'ItemGroupData' and x.ItemGroupRepeatKey.get_value() == '0' and x.ItemGroupOID.get_value() == 'Enrollment').get()
     assert x.ItemGroupOID.get_value() == "Enrollment"

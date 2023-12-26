@@ -8,18 +8,4 @@
 
 
 
-merge
-属性规则：
-    1. 已有的属性不会被更新
-    eg: element(a=1,b=1)  merge  merge_element(a=2), element.a不会改变
-    2. 未使用的属性，如果merge 对象使用，则会新增
-    eg: element(a=1)  merge  merge_element(a=1,b=1), element.a不会改变,会新增一个属性element.b = 1
-ManyElement 规则
-    判断 元素是否相似(like)
-        如果相似，则 合并元素
-        如果不相似，则 在被merged对象中直接添加一个新元素
-OneElement 规则
-    表示该属性没有使用
-对象实例：
-    合并对象
-    如果有Value的，直接覆盖
+*整理 merge 的 合并对象的选取规则??

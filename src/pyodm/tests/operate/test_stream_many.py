@@ -41,7 +41,7 @@ def test_stream_merge_many(test_case1_data1, test_case1_data2):
 
     """
     base = test_case1_data1.as_stream().find(_lambda=lambda x: x.get_name() == "ODM")
-    base.merge("ODM", test_case1_data2)
+    base.merge(test_case1_data2)
     out_put(test_case1_data1)
     assert test_case1_data1.ClinicalData.array[0].StudyOID.get_value() == "11"
     assert test_case1_data1.ClinicalData.array[0].MetaDataVersionOID.get_value() == "11"
@@ -88,7 +88,7 @@ def test_case2_data2():
 
 def test_case2(test_case2_data1, test_case2_data2):
     base = test_case2_data1.as_stream().find(_lambda=lambda x: x.get_name() == "ODM")
-    base.merge("ClinicalData", test_case2_data2)
+    base.merge(test_case2_data2)
     item_data = test_case2_data1.as_stream() \
         .find(_lambda=lambda x: x.get_name() == 'SubjectData' and x.SubjectKey.get_value() == 'D001001') \
         .find(_lambda=lambda
@@ -130,7 +130,7 @@ def test_case3_data2():
 
 def test_case3(test_case3_data1, test_case3_data2):
     base = test_case3_data1.as_stream().find(_lambda=lambda x: x.get_name() == "ODM")
-    base.merge("ClinicalData", test_case3_data2)
+    base.merge(test_case3_data2)
     find_lambda = lambda element: element.get_name() == "Query" and element.OID.get_value() == "111"
     query = test_case3_data1.as_stream().find(_lambda=find_lambda).get()
     assert query.Value.get_value() == "Value 2200-10-01 "
@@ -162,7 +162,7 @@ def test_case4_data2():
 
 def test_case4(test_case4_data1, test_case4_data2):
     base = test_case4_data1.as_stream().find(_lambda=lambda x: x.get_name() == "ODM")
-    base.merge("ItemGroupData", test_case4_data2)
+    base.merge(test_case4_data2)
     itemgroup_lamda = Finder().element(name="ItemGroupData").attribute(ItemGroupOID="IG.WBC").Lambda()
     item_lambda = Finder().element(name="ItemData").attribute(ItemOID="IT.WBC").Lambda()
     item_data = test_case4_data1.as_stream().find(_lambda=itemgroup_lamda).find(_lambda=item_lambda).get()
