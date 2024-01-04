@@ -85,6 +85,12 @@ ODM Class的定义是根据 [ODM V2](https://wiki.cdisc.org/display/ODM2/ODM+v2.
 前提是 被合并对象 odm_element 与 合并对象的 根节点一致
 ![odm merge.jpg](images/odm merge.jpg)
 
+### add
+添加 ElementEntity 到 OneElement
+前提:
+ 1. 新增的 OneElement 存在
+ 2. OneElement 还没有被实例化
+
 ### replace
 替换指定的子元素
 1. 子元素为 OneElement 和 实例直接替换
@@ -210,6 +216,10 @@ branches = [
 1. 修改了 odm_dfs 搜索会忽略掉 odm 对象的BUG
 2. 修改了 merge 时，会忽略掉 odm 对象 的 BUG
 3. 新增了 replace 操作
+
+## Release 1.0.3.2
+
+1. 新增了 add 操作
 
 ## 未来计划
 1. JSON 格式的 ODM 数据支持

@@ -1,0 +1,9 @@
+<ClinicalData>
+  <SubjectData SubjectKey="D001001">
+    <StudyEventData StudyEventOID="Screening">
+      <ItemGroupData ItemGroupOID="HeaderLog" ItemGroupRepeatKey="0">
+
+      </ItemGroupData>
+    </StudyEventData>
+  </SubjectData>
+</ClinicalData>

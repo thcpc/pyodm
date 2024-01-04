@@ -117,3 +117,7 @@ class OdmUtils:
         :rtype:
         """
         return element.__dict__.get(sub_name) is None or element.__dict__.get(sub_name).no_use()
+
+    @staticmethod
+    def add(base, element_entity):
+        setattr(base, element_entity.get_name(), element_entity)

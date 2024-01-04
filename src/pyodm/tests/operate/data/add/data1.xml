@@ -9,7 +9,6 @@
     </StudyEventData>
   </SubjectData>
   <SubjectData SubjectKey="D001002">
-    <SiteRef LocationOID="D001"/>
     <StudyEventData StudyEventOID="Screening">
       <ItemGroupData ItemGroupOID="HeaderLog" ItemGroupRepeatKey="0">
         <ItemData ItemOID="SVDAT">

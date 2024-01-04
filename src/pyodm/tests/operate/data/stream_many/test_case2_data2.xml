@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ODM FileType="Snapshot" Granularity="AllClinicalData" CreationDateTime="2021-03-10T13:36:51.668-00:00"
+     FileOID="8ca17c08-5a6f-4fcb-bf82-b4fa46fe6d99" ODMVersion="2.0"
+     xmlns="http://www.cdisc.org/ns/odm/v2.0">
+    <ClinicalData StudyOID="11" MetaDataVersionOID="11">
+        <SubjectData SubjectKey="D001001">
+            <SiteRef LocationOID="D001"/>
+            <StudyEventData StudyEventOID="Screening">
+                <ItemGroupData ItemGroupOID="HeaderLog" ItemGroupRepeatKey="0">
+                    <ItemData ItemOID="SVDAT">
+                        <Value SeqNum="684">684</Value>
+                    </ItemData>
+                </ItemGroupData>
+            </StudyEventData>
+        </SubjectData>
+        <SubjectData SubjectKey="D001002">
+            <SiteRef LocationOID="D001"/>
+            <StudyEventData StudyEventOID="Screening">
+                <ItemGroupData ItemGroupOID="HeaderLog" ItemGroupRepeatKey="0">
+                    <ItemData ItemOID="SVDAT">
+                        <Value SeqNum="685">685</Value>
+                    </ItemData>
+                </ItemGroupData>
+            </StudyEventData>
+        </SubjectData>
+    </ClinicalData>
+</ODM>

@@ -100,5 +100,21 @@ class Optional:
         else:
             raise Exception(f"{name} is not ManyElements")
 
+    def add(self, element_entity):
+        """
+        增加一个 OneElement 实例
+        前提是：
+        1. 新增的 OneElement 存在
+        2. OneElement 还没有被实例化
+        :param element_entity:  Element 的实例
+        :type element_entity:
+        :return:
+        :rtype:
+        """
+        if not OdmUtils.is_one_element(self._data.__dict__.get(element_entity.get_name())):
+            raise Exception(f'{element_entity.get_name()} is not OneElement')
+        OdmUtils.add(self._data, element_entity)
+
+
     def as_stream(self):
         return Stream(self._data)
