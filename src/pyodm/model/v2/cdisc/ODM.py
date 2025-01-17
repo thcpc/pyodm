@@ -28,8 +28,7 @@ class ODM(Meta.CdiscODMEntity):
     SourceSystem = Model.Attribute()
     
     SourceSystemVersion = Model.Attribute()
-    
-    
+
     Description = Model.ManyElements()
     
     Study = Model.ManyElements()

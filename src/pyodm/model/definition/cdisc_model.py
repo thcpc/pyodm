@@ -6,6 +6,17 @@ class CdiscModel:
         self._preset_usage: Usage = None
         self._name = "NoUse!"
         self._parent = None
+        self._value = None
+
+    def get_value(self):
+        return self._value
+
+    def set_value(self, value):
+        self._value = value
+
+    def is_blank(self) -> bool:
+        return self._value is None
+
 
     def find(self, **attributes):
         raise Exception(f"{self.get_name} is not ManyElements, Only ManyElements have")
@@ -41,10 +52,12 @@ class CdiscModel:
         raise Exception("CdiscModel must defined name")
 
 
-    def set_name(self, value): self._name = value
+    def set_name(self, value):
+        self._name = value
 
-    def get_value(self):
-        raise Exception(f"{self.get_name()} is not ManyElements, ManyElements is not have this method")
+    # def get_value(self):
+    #
+    #     raise Exception(f"{self.get_name()} is ManyElements, ManyElements is not have this method")
 
 
     # TODO

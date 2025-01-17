@@ -6,6 +6,7 @@ import pyodm.model.definition as Model
 import pyodm.model.meta.cdisc_odm_entity as Meta
 from pyodm.core.xml.writer.write_status import WriteStatus
 from pyodm.exceptions import XmlWriterException
+from pyodm.model.definition import ManyElements
 
 
 def cdisc(model):
@@ -52,7 +53,7 @@ class CdiscXmlWriter:
     @cdisc(model=Meta.CdiscODMEntity)
     def _entity(self, cdisc, element: etree._Element = None) -> WriteStatus:
         element = etree.Element(cdisc.get_name) if element is None else element
-        if not cdisc.is_blank():
+        if not isinstance(cdisc, ManyElements) and not cdisc.is_blank():
             element.text = cdisc.get_value()
         for name, cdisc_instance in vars(cdisc).items():
             if not self.cdisc_model(cdisc_instance): continue

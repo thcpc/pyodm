@@ -16,12 +16,12 @@ class ManyElements(CdiscModel):
     def get_name(self):
         return self._name
 
-    def set_name(self, value):
-        self._name = value
-
     @property
     def array(self) -> list:
         return self._array
+
+    def append(self, other):
+        self._array.append(other)
 
     def __lshift__(self, other):
         self._array.append(other)
@@ -46,15 +46,15 @@ class ManyElements(CdiscModel):
         :return: 符合要求的节点 如果没有查询到则返回None
         :rtype: CdiscODMEntity 或 None
         """
-        for entity in self.array:
-            bingo = True
-            for key, value in attributes.items():
-                finder = getattr(entity, key, None)
-
-                if finder is None or finder.no_use() or finder.get_value() != value:
-                    bingo = False
-                    break
-            if bingo: return entity
+        if attributes:
+            for entity in self.array:
+                bingo = True
+                for key, value in attributes.items():
+                    finder = getattr(entity, key, None)
+                    if finder is None or finder.no_use() or finder.get_value() != value:
+                        bingo = False
+                        break
+                if bingo: return entity
         return None
 
     @property
@@ -75,15 +75,12 @@ class OneElement(CdiscModel):
     def __init__(self):
         super().__init__()
         self._name = "NoUse!"
-        self._value = None
+        # self._value = None
+
+    def get_name(self):
+        return self._name
 
 
-    def get_name(self): return self._name
 
-    def set_name(self, value): self._name = value
 
-    def get_value(self): return self._value
 
-    def set_value(self, value): self._value = value
-
-    def is_blank(self) -> bool: return self._value is None
