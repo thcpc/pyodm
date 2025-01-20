@@ -14,23 +14,33 @@ class CdiscConfigurationSpecificationReader(AbstractConfigurationReader):
     读取 Specifincation 配置文件
     """
 
-    def load_cdisc_definition(self, registry, files: list[str]):
-        for file in files:
-            xml_tree = Etree.parse(file)
-            root = xml_tree.getroot()
-            cdisc = self._find_cdisc(root)
-            if cdisc is None: raise CdiscDefineRequiredException(f"{file} 没有定义 CDISC 节点")
-            for name, clazz_info in self._cdisc_loader(cdisc).items():
-                module = importlib.import_module(clazz_info.get("modulePath"))
-                clazz = getattr(module, clazz_info.get("clazz"))
-                elements = []
-                for attr_name, attr in vars(clazz).items():
-                    if isinstance(attr, OneElement) or isinstance(attr, ManyElements):
-                        elements.append(XpathNode(attr_name))
-                registry.definition_tree.add(XpathNode(name), elements)
+    def load_cdisc_definition(self, registry, spec_file: str):
 
-                registry.registry_cdisc(name, clazz)
+        xml_tree = Etree.parse(spec_file)
+        root = xml_tree.getroot()
+        cdisc = self._find_cdisc(root)
+        if cdisc is None: raise CdiscDefineRequiredException(f"{spec_file} 没有定义 CDISC 节点")
+        for name, clazz_info in self._cdisc_loader(cdisc).items():
+            module = importlib.import_module(clazz_info.get("modulePath"))
+            clazz = getattr(module, clazz_info.get("clazz"))
+            elements = []
+            for attr_name, attr in vars(clazz).items():
+                if isinstance(attr, OneElement) or isinstance(attr, ManyElements):
+                    elements.append(XpathNode(attr_name))
+            registry.definition_tree.add(XpathNode(name), elements)
 
+            registry.registry_cdisc(name, clazz)
+
+    def data_reader(self, spec_file: str):
+        xml_tree = Etree.parse(spec_file)
+        root = xml_tree.getroot()
+        data_reader_class = root.attrib.get("dataReader")
+        if data_reader_class is None:
+            raise Exception(f"{spec_file} is not define dataReader on root")
+        pkg, clazz_name = ".".join(data_reader_class.split(".")[0:-1]), data_reader_class.split(".")[-1]
+        module = importlib.import_module(pkg)
+        clazz = getattr(module, clazz_name)
+        return clazz
     def _find_cdisc(self, element):
         if element.tag.lower() == "CDISC".lower():
             return element

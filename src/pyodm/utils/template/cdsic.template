@@ -1,0 +1,15 @@
+import pyodm.core.model as model
+import pyodm.core.meta.cdisc_odm_entity as meta
+
+
+class {{cdiscName}}(meta.CdiscODMEntity):
+    """
+    https://wiki.cdisc.org/display/ODM2/{{cdiscName}}
+    """
+    {% for name, cls_type in cdisc.get('attributes').items() %}
+    {{name}} = {{cls_type}}
+    {% endfor %}
+    {% for element in cdisc.get('elements') %}
+    {{element.get('name')}} = {{element.get('cls_type')}}
+    {% endfor %}
+

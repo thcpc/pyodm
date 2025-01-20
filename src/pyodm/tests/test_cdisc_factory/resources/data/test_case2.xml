@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ODM FileType="Snapshot" Granularity="AllClinicalData" CreationDateTime="2021-03-10T13:36:51.668-00:00"
-     FileOID="8ca17c08-5a6f-4fcb-bf82-b4fa46fe6d99" ODMVersion="2.0"
-     xmlns="http://www.cdisc.org/ns/odm/v2.0">
-    <ClinicalData StudyOID="11" MetaDataVersionOID="11">
-    </ClinicalData>
-    <ClinicalData StudyOID="EX001" MetaDataVersionOID="1010">
-    </ClinicalData>
-</ODM>

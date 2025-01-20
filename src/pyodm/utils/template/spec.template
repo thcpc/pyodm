@@ -1,0 +1,13 @@
+
+{% for name , content in cdiscs.items()%}
+class {{name}}(Mixin):
+    """
+    https://wiki.cdisc.org/display/ODM2/{{name}}
+    """
+    {% for name, cls_type in content.get('attributes').items() %}
+    {{name}} = {{cls_type}}
+    {% endfor %}
+    {% for element in content.get('elements') %}
+    {{element.get('name')}} = {{element.get('cls_type')}}
+    {% endfor %}
+{% endfor %}

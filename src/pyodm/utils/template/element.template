@@ -1,0 +1,35 @@
+
+import pyodm.model.meta.cdisc_odm_entity as Meta
+{% for fileName, className in importAttributeClass.items() %}
+from pyodm.model.cdisc.classv2.attribute.{{fileName}} import {{className}}
+{% endfor %}
+{% for fileName, className in importElementClass.items() %}
+from pyodm.model.cdisc.classv2.element.{{fileName}} import {{className}}
+{% endfor %}
+{% if elementClass %}
+from pyodm.model.definition import {{elementClass}}
+{% endif %}
+
+
+class {{className}}({{parentClass}}):
+    """
+    https://wiki.cdisc.org/display/ODM2/{{className}}
+    """
+
+    def __init__(self):
+        super().__init__()
+        self.set_name("{{className}}")
+        {% for instanceName, instanceClass in instances.items() %}
+        self._{{instanceName}} = None
+        {% endfor %}
+
+    {% for instanceName, instanceClass in instances.items() %}
+    @property
+    def {{instanceName}}(self):
+        """
+        {{instanceClass.get("Description")}}
+        """
+        if self._{{instanceName}} is None:
+            self._{{instanceName}} = {{instanceClass.get("Class")}}()
+        return self._{{instanceName}}
+    {% endfor %}

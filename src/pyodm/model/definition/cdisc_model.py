@@ -17,7 +17,6 @@ class CdiscModel:
     def is_blank(self) -> bool:
         return self._value is None
 
-
     def find(self, **attributes):
         raise Exception(f"{self.get_name} is not ManyElements, Only ManyElements have")
 
@@ -47,26 +46,11 @@ class CdiscModel:
     def index(self, i):
         raise Exception(f"{self.get_name} is not ManyElements, Only ManyElements have")
 
-
     def get_name(self):
         raise Exception("CdiscModel must defined name")
 
-
     def set_name(self, value):
         self._name = value
-
-    # def get_value(self):
-    #
-    #     raise Exception(f"{self.get_name()} is ManyElements, ManyElements is not have this method")
-
-
-    # TODO
-    def each(self, usage, **attributes):
-        raise Exception(f"{self.get_name()} is not ManyElements, Only ManyElements have")
-
-    # TODO
-    def select(self, **attributes):
-        raise Exception(f"{self.get_name()} is not ManyElements, Only ManyElements have")
 
     def business(self):
         """

@@ -14,6 +14,7 @@ class CdiscConfigurationXsdReader(AbstractConfigurationReader):
     """
     读取 ODM XSD 格式的配置文件
     https://github.com/cdisc-org/DataExchange-ODM/tree/main/schema
+    废弃
     """
     def __init__(self):
         self.attributeGroups = dict()

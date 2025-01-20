@@ -1,10 +1,9 @@
-import pathlib
+import abc
 from abc import ABC
 
 from pyodm.core.data_loader.xml_path_loader import XmlPathLoader
 from pyodm.core.source.path_source import PathSource
-from pyodm.core.xml.reader.data.xml_data_reader import XMLDataReader
-from pyodm.factory.abstract_cdisc_factory import AbstractCdiscFactory
+from pyodm.core.support.abstract_xml_data_reader import AbstractXMLDataReader
 from pyodm.factory.abstract_hierarchy_factory import AbstractHierarchyFactory
 
 
@@ -20,12 +19,13 @@ class AbstractCdiscXMLFactory(AbstractHierarchyFactory, ABC):
         self._data_file = data_file_path.read()
         self.data_loader = XmlPathLoader(self._data_file)
 
-    def data_reader(self) -> XMLDataReader:
+    @abc.abstractmethod
+    def data_reader(self) -> AbstractXMLDataReader:
         """
         指定了解析 ODM XML Data 的数据方式
         :return:
         :rtype:
         """
-        return XMLDataReader(self)
+        ...
 
 

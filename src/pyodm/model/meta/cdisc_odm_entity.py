@@ -26,8 +26,5 @@ class CdiscODMEntity(metaclass=EntityMeta):
     def set_name(self, value):
         self._name = value
 
-    def is_blank(self) -> bool: return self.get_value() is None
-
-    def as_stream(self):
-        from pyodm.utils.stream import Stream
-        return Stream(self)
+    def is_blank(self) -> bool:
+        return self.get_value() is None

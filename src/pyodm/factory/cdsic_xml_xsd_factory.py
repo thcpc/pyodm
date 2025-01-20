@@ -9,6 +9,7 @@ from pyodm.model import odm_xsd_description
 class CdiscXMLXsdFactory(AbstractCdiscXMLFactory):
     """
     Class 类型的定义在XSD文件中
+    废弃
     """
 
     def default_description_files(self) -> list:

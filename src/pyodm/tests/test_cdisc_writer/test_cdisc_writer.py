@@ -5,7 +5,7 @@ import pytest
 from pyodm.core.source.path_source import PathSource
 from pyodm.core.xml.writer.cdisc_xml_writer import CdiscXmlWriter
 from pyodm.exceptions import XmlWriterException
-from pyodm.factory.cdisc_xml_specification_factory import CdiscXMLSpecificationFactory
+from pyodm.factory.cdisc_xml_spec_factory import CdiscXMLSpecFactory
 from pyodm.factory.cdsic_xml_xsd_factory import CdiscXMLXsdFactory
 from pyodm.model import odm_xsd_description, odm_specification_description
 from pyodm.model.v2.specification import Specification
@@ -48,8 +48,8 @@ def test_case4():
 def test_case5():
     with pytest.raises(XmlWriterException):
         file_path = "D:\\github\\pyodm\\src\\pyodm\\unit_tests\\test_cdisc_writer\\resources\\test_case4.xml"
-        cdisc = CdiscXMLSpecificationFactory(data_file=PathSource("resources", "test_case4.xml"),
-                                             specification_files=odm_specification_description())
+        cdisc = CdiscXMLSpecFactory(data_file=PathSource("resources", "test_case4.xml"),
+                                    specification_files=odm_specification_description())
         c = cdisc.odm().ClinicalData.first().SubjectData.first()
         cw = CdiscXmlWriter(c,out_put=Path("test.xml"))
         cw.write()
@@ -74,7 +74,7 @@ def assert_case2(output_name):
 
 def assert_case3(output_name):
     file = f"D:\\github\\pyodm\\src\\pyodm\\unit_tests\\test_cdisc_writer\\{output_name}"
-    cdisc = CdiscXMLSpecificationFactory(data_file=PathSource(output_name), specification_files=odm_specification_description())
+    cdisc = CdiscXMLSpecFactory(data_file=PathSource(output_name), specification_files=odm_specification_description())
     subject = cdisc.odm().ClinicalData.first().SubjectData.first()
     item_group_data = subject.StudyEventData.first().ItemGroupData.find()
     item_group_data1 = item_group_data.ItemGroupData.index(0)
